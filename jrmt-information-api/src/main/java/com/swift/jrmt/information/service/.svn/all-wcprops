@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/!svn/ver/42593/56kuaiche/trunk/jinrimeitan_server/jrmt-information-api/src/main/java/com/swift/jrmt/information/service
+END
+AudioService.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/!svn/ver/42421/56kuaiche/trunk/jinrimeitan_server/jrmt-information-api/src/main/java/com/swift/jrmt/information/service/AudioService.java
+END
+KeyWordService.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/!svn/ver/42227/56kuaiche/trunk/jinrimeitan_server/jrmt-information-api/src/main/java/com/swift/jrmt/information/service/KeyWordService.java
+END
+InformationTopService.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/svn/!svn/ver/42503/56kuaiche/trunk/jinrimeitan_server/jrmt-information-api/src/main/java/com/swift/jrmt/information/service/InformationTopService.java
+END
+TagService.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/!svn/ver/42227/56kuaiche/trunk/jinrimeitan_server/jrmt-information-api/src/main/java/com/swift/jrmt/information/service/TagService.java
+END
+AudioStatService.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/!svn/ver/42593/56kuaiche/trunk/jinrimeitan_server/jrmt-information-api/src/main/java/com/swift/jrmt/information/service/AudioStatService.java
+END
+InformationService.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/svn/!svn/ver/42527/56kuaiche/trunk/jinrimeitan_server/jrmt-information-api/src/main/java/com/swift/jrmt/information/service/InformationService.java
+END
+InformationContentService.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/svn/!svn/ver/42559/56kuaiche/trunk/jinrimeitan_server/jrmt-information-api/src/main/java/com/swift/jrmt/information/service/InformationContentService.java
+END
+InformationStatService.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/svn/!svn/ver/42559/56kuaiche/trunk/jinrimeitan_server/jrmt-information-api/src/main/java/com/swift/jrmt/information/service/InformationStatService.java
+END
+InformationRightService.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/svn/!svn/ver/42141/56kuaiche/trunk/jinrimeitan_server/jrmt-information-api/src/main/java/com/swift/jrmt/information/service/InformationRightService.java
+END
+ChannelService.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/!svn/ver/42244/56kuaiche/trunk/jinrimeitan_server/jrmt-information-api/src/main/java/com/swift/jrmt/information/service/ChannelService.java
+END

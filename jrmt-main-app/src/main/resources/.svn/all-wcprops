@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/42572/56kuaiche/trunk/jinrimeitan_server/jrmt-main-app/src/main/resources
+END
+spring-mvc.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/42212/56kuaiche/trunk/jinrimeitan_server/jrmt-main-app/src/main/resources/spring-mvc.xml
+END
+log4j.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/42113/56kuaiche/trunk/jinrimeitan_server/jrmt-main-app/src/main/resources/log4j.xml
+END
+redis.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/42113/56kuaiche/trunk/jinrimeitan_server/jrmt-main-app/src/main/resources/redis.xml
+END
+spring.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/42212/56kuaiche/trunk/jinrimeitan_server/jrmt-main-app/src/main/resources/spring.xml
+END
+dubbo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/42549/56kuaiche/trunk/jinrimeitan_server/jrmt-main-app/src/main/resources/dubbo.xml
+END
+config.properties
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/42572/56kuaiche/trunk/jinrimeitan_server/jrmt-main-app/src/main/resources/config.properties
+END

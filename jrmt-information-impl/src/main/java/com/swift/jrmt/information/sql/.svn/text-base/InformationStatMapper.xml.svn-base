@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.swift.jrmt.information.dao.InformationStatDao">
+
+	<resultMap id="BaseResultMap" type="com.swift.jrmt.information.model.InformationStat" >
+	    <id column="id" property="id" jdbcType="BIGINT" />
+	    <result column="created" property="created" jdbcType="TIMESTAMP" />
+	    <result column="deleted" property="deleted" jdbcType="BIT" />
+	    <result column="updated" property="updated" jdbcType="TIMESTAMP" />	    
+	    <result column="information_id" property="informationId" jdbcType="BIGINT" />
+	    <result column="visit_num" property="visitNum" jdbcType="INTEGER" />
+	    <result column="comment_num" property="commentNum" jdbcType="INTEGER" />
+	    <result column="praise_num" property="praiseNum" jdbcType="INTEGER" />
+	    <result column="critical_num" property="criticalNum" jdbcType="INTEGER"/>
+	    <result column="share_num" property="shareNum" jdbcType="INTEGER" />
+	    <result column="collect_num" property="collectNum" jdbcType="INTEGER"/>
+	    <result column="v_num" property="vNum" jdbcType="INTEGER" />
+  	</resultMap>
+  	
+  	<resultMap id="BaseResultMapByDto" type="com.swift.jrmt.information.dto.InformationStatDto" >
+	    <id column="id" property="id" jdbcType="BIGINT" />
+	    <result column="created" property="created" jdbcType="TIMESTAMP" />
+	    <result column="deleted" property="deleted" jdbcType="BIT" />
+	    <result column="updated" property="updated" jdbcType="TIMESTAMP" />	    
+	    <result column="information_id" property="informationId" jdbcType="BIGINT" />
+	    <result column="visit_num" property="visitNum" jdbcType="INTEGER" />
+	    <result column="comment_num" property="commentNum" jdbcType="INTEGER" />
+	    <result column="praise_num" property="praiseNum" jdbcType="INTEGER" />
+	    <result column="critical_num" property="criticalNum" jdbcType="INTEGER"/>
+	    <result column="share_num" property="shareNum" jdbcType="INTEGER" />
+	    <result column="collect_num" property="collectNum" jdbcType="INTEGER"/>
+	    <result column="v_num" property="vNum" jdbcType="INTEGER" />
+  	</resultMap>
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+			id,
+			created,
+			deleted,
+			updated,
+			information_id,
+			visit_num,
+			comment_num,
+			praise_num,
+			critical_num,
+			share_num,
+			collect_num,
+			v_num
+
+	</sql>
+
+	<!-- 通用条件列-->
+	<sql id="Base_And">
+		<if test="id != null">
+		  and id=#{id,jdbcType=BIGINT}  
+		</if>
+		<if test="created != null">
+		  and created=#{created,jdbcType=TIMESTAMP}  
+		</if>
+		<if test="deleted != null">
+		  and deleted=#{deleted,jdbcType=BIT}  
+		</if>
+		<if test="updated != null">
+		  and updated=#{updated,jdbcType=TIMESTAMP}  
+		</if>
+		<if test="informationId != null">
+		  and information_id=#{informationId,jdbcType=BIGINT}  
+		</if>
+		<if test="visitNum != null">
+		  and visit_num=#{visitNum,jdbcType=INTEGER}  
+		</if>
+		<if test="commentNum != null">
+		  and comment_num=#{commentNum,jdbcType=INTEGER}  
+		</if>
+		<if test="praiseNum != null">
+		  and praise_num=#{praiseNum,jdbcType=INTEGER}  
+		</if>
+		<if test="criticalNum != null">
+		  and critical_num=#{criticalNum,jdbcType=INTEGER}  
+		</if>
+		<if test="shareNum != null">
+		  and share_num=#{shareNum,jdbcType=INTEGER}  
+		</if>
+		<if test="collectNum != null">
+		  and collect_num=#{collectNum,jdbcType=INTEGER}  
+		</if>
+		<if test="vNum != null">
+		  and v_num=#{vNum,jdbcType=INTEGER}  
+		</if>
+
+	</sql>
+
+	<!-- 查询单个对象方法-->
+	<select id="selectByPrimaryKey" parameterType="Long" resultType="com.swift.jrmt.information.model.InformationStat"  >
+		 select <include refid="Base_Column_List"/> 
+		  from information_stat
+		  where 1=1 <include refid="Base_And"/> 
+	</select>
+	
+	<select id="findByModel" parameterType="com.swift.jrmt.information.dto.InformationStatDto" resultMap="BaseResultMapByDto"  >
+		 select <include refid="Base_Column_List"/> 
+		  from information_stat
+		  where 1=1 <include refid="Base_And"/> 
+	</select>
+
+	<!-- 添加 （匹配有值的字段）-->
+	<insert id="insertSelective" parameterType="com.swift.jrmt.information.model.InformationStat">
+		 INSERT INTO information_stat
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="id != null">
+				 id,
+			</if>
+			<if test="created != null">
+				 created,
+			</if>
+			<if test="deleted != null">
+				 deleted,
+			</if>
+			<if test="updated != null">
+				 updated,
+			</if>
+			<if test="informationId != null">
+				 information_id,
+			</if>
+			<if test="visitNum != null">
+				 visit_num,
+			</if>
+			<if test="commentNum != null">
+				 comment_num,
+			</if>
+			<if test="praiseNum != null">
+				 praise_num,
+			</if>
+			<if test="criticalNum != null">
+				 critical_num,
+			</if>
+			<if test="shareNum != null">
+				 share_num,
+			</if>
+			<if test="collectNum != null">
+				 collect_num,
+			</if>
+			<if test="vNum != null">
+				 v_num,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="id!=null">
+				 #{id, jdbcType=BIGINT},
+			</if>
+			<if test="created!=null">
+				 #{created, jdbcType=TIMESTAMP},
+			</if>
+			<if test="deleted!=null">
+				 #{deleted,jdbcType= BIT},
+			</if>
+			<if test="updated!=null">
+				 #{updated, jdbcType=TIMESTAMP},
+			</if>
+			<if test="informationId!=null">
+				 #{informationId,jdbcType= BIGINT},
+			</if>
+			<if test="visitNum!=null">
+				 #{visitNum, jdbcType=INTEGER},
+			</if>
+			<if test="commentNum!=null">
+				 #{commentNum, jdbcType=INTEGER},
+			</if>
+			<if test="praiseNum!=null">
+				 #{praiseNum, jdbcType=INTEGER},
+			</if>
+			<if test="criticalNum!=null">
+				 #{criticalNum,jdbcType= INTEGER},
+			</if>
+			<if test="shareNum!=null">
+				 #{shareNum,jdbcType= INTEGER},
+			</if>
+			<if test="collectNum!=null">
+				 #{collectNum, jdbcType=INTEGER},
+			</if>
+			<if test="vNum!=null">
+				 #{vNum, jdbcType=INTEGER},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKeySelective" parameterType="com.swift.jrmt.information.model.InformationStat">
+		 UPDATE information_stat
+ 		 <set> 
+			<if test="created != null">
+				 created = #{created, jdbcType=TIMESTAMP },
+			</if>
+			<if test="deleted != null">
+				 deleted = #{deleted, jdbcType=BIT },
+			</if>
+			<if test="updated != null">
+				 updated = #{updated, jdbcType=TIMESTAMP },
+			</if>
+			<if test="informationId != null">
+				 information_id = #{informationId,jdbcType= BIGINT },
+			</if>
+			<if test="visitNum != null">
+				 visit_num = #{visitNum,jdbcType= INTEGER },
+			</if>
+			<if test="commentNum != null">
+				 comment_num = #{commentNum,jdbcType= INTEGER },
+			</if>
+			<if test="praiseNum != null">
+				 praise_num = #{praiseNum, jdbcType=INTEGER },
+			</if>
+			<if test="criticalNum != null">
+				 critical_num = #{criticalNum,jdbcType= INTEGER },
+			</if>
+			<if test="shareNum != null">
+				 share_num = #{shareNum,jdbcType= INTEGER },
+			</if>
+			<if test="collectNum != null">
+				 collect_num = #{collectNum,jdbcType= INTEGER },
+			</if>
+			<if test="vNum != null">
+				 v_num = #{vNum, jdbcType=INTEGER },
+			</if>
+
+ 		 </set>
+		 WHERE id = #{id,jdbcType= BIGINT}
+	</update>	
+	
+	<!-- mark :1、访问数(真实的访问数)    2、评论数   3、顶数    4、踩数     5、分享数    6、收藏数 -->
+	<update id="updateInformationStat" parameterType="com.swift.jrmt.information.dto.InformationStatDto">
+		 UPDATE information_stat
+ 		 <set> 
+			
+			<if test="updated != null">
+				 updated = #{updated, jdbcType=TIMESTAMP },
+			</if>
+			<if test="visitNum != null">
+				 visit_num = #{visitNum,jdbcType= INTEGER },
+			</if>
+			<if test="commentNum != null">
+				 comment_num = #{commentNum,jdbcType= INTEGER },
+			</if>
+			<if test="praiseNum != null">
+				 praise_num = #{praiseNum, jdbcType=INTEGER },
+			</if>
+			<if test="criticalNum != null">
+				 critical_num = #{criticalNum,jdbcType= INTEGER },
+			</if>
+			<if test="shareNum != null">
+				 share_num = #{shareNum,jdbcType= INTEGER },
+			</if>
+			<if test="collectNum != null">
+				 collect_num = #{collectNum,jdbcType= INTEGER },
+			</if>
+			<if test="vNum != null">
+				 v_num = #{vNum, jdbcType=INTEGER },
+			</if>
+
+ 		 </set>
+		 WHERE information_id = #{informationId,jdbcType= BIGINT}
+	</update>
+	<!-- 删除-->
+	<delete id="deleteByCloumn">
+		 delete from information_stat  WHERE id = #{id, jdbcType=BIGINT}
+	</delete>
+
+
+</mapper>

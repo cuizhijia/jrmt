@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.swift.jrmt.comment.dao.CommentDao">
+
+	<!--“字段名”与“属性名” 对应表 -->
+	<resultMap id="BaseResultMap" type="com.swift.jrmt.comment.model.Comment">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="created" property="created" jdbcType="TIMESTAMP" />
+		<result column="deleted" property="deleted" jdbcType="BIT" />
+		<result column="updated" property="updated" jdbcType="TIMESTAMP" />
+		<result column="information_id" property="informationId"
+			jdbcType="BIGINT" />
+		<result column="user_id" property="userId" jdbcType="BIGINT" />
+		<result column="pub_uid" property="pubUid" jdbcType="BIGINT" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+		<result column="content" property="content" jdbcType="VARCHAR" />
+		<result column="pub_time" property="pubTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<!-- 评论列表返回值map -->
+	<resultMap type="com.swift.jrmt.comment.dto.CommentAppDto"
+		id="commentListResultMap">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="created" property="created" jdbcType="TIMESTAMP" />
+		<result column="deleted" property="deleted" jdbcType="BIT" />
+		<result column="updated" property="updated" jdbcType="TIMESTAMP" />
+		<result column="information_id" property="informationId"
+			jdbcType="BIGINT" />
+		<result column="user_id" property="userId" jdbcType="BIGINT" />
+		<result column="pub_uid" property="pubUid" jdbcType="BIGINT" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+		<result column="content" property="content" jdbcType="VARCHAR" />
+		<result column="pub_time" property="pubTime" jdbcType="TIMESTAMP" />
+		<result column="nickname" property="userName" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<!-- crm 查询评论列表返回值 -->
+	<resultMap type="com.swift.jrmt.comment.dto.CommentCrmDto"
+		id="crmCommentListResultMap">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="created" property="created" jdbcType="TIMESTAMP" />
+		<result column="deleted" property="deleted" jdbcType="BIT" />
+		<result column="updated" property="updated" jdbcType="TIMESTAMP" />
+		<result column="information_id" property="informationId" jdbcType="BIGINT" />
+		<result column="user_id" property="userId" jdbcType="BIGINT" />
+		<result column="pub_uid" property="pubUid" jdbcType="BIGINT" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+		<result column="content" property="content" jdbcType="VARCHAR" />
+		<result column="pub_time" property="pubTime" jdbcType="TIMESTAMP" />
+		<result column="title" property="infoTitle" jdbcType="VARCHAR" />
+		<result column="fullname" property="pubUserName" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- 表字段名 -->
+	<sql id="Base_Column_List">
+		comment.id, comment.created, comment.deleted, comment.updated,
+		comment.information_id, comment.user_id, comment.pub_uid,
+		comment.status, comment.content,
+		comment.pub_time
+	</sql>
+	<!-- crm 筛选评论列表时用的字段 -->
+	<sql id="crmSelectColumnList">
+ 	 	com.id,
+ 	  	com.created,
+ 	   	com.deleted,
+ 	    com.updated,
+ 	    com.information_id,
+ 	    com.user_id,
+ 	    com.pub_uid,
+		com.status,
+		com.content,
+		com.pub_time,
+		info.title,
+	 aUser.fullname</sql>
+	 
+	<!-- 按主键进行查询 -->
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from comment
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+
+	<!-- 按主键删除资讯评论 -->
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from comment
+		where id = #{id,jdbcType=BIGINT}
+	</delete>
+
+	<!-- 往资讯评论表里插入一条数据 -->
+	<insert id="insert" parameterType="com.swift.jrmt.comment.model.Comment">
+		insert into comment (id, created, deleted,
+		updated, information_id, user_id,
+		pub_uid, status, content,
+		pub_time)
+		values (#{id,jdbcType=BIGINT}, #{created,jdbcType=TIMESTAMP},
+		#{deleted,jdbcType=BIT},
+		#{updated,jdbcType=TIMESTAMP}, #{informationId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT},
+		#{pubUid,jdbcType=BIGINT}, #{status,jdbcType=INTEGER},
+		#{content,jdbcType=VARCHAR},
+		#{pubTime,jdbcType=TIMESTAMP})
+	</insert>
+
+	<!-- 插入一条实体 -->
+	<insert id="insertSelective" parameterType="com.swift.jrmt.comment.model.Comment">
+		insert into comment
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="created != null">
+				created,
+			</if>
+			<if test="deleted != null">
+				deleted,
+			</if>
+			<if test="updated != null">
+				updated,
+			</if>
+			<if test="informationId != null">
+				information_id,
+			</if>
+			<if test="userId != null">
+				user_id,
+			</if>
+			<if test="pubUid != null">
+				pub_uid,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="content != null">
+				content,
+			</if>
+			<if test="pubTime != null">
+				pub_time,
+			</if>
+		</trim>
+
+
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="created != null">
+				#{created,jdbcType=TIMESTAMP},
+			</if>
+			<if test="deleted != null">
+				#{deleted,jdbcType=BIT},
+			</if>
+			<if test="updated != null">
+				#{updated,jdbcType=TIMESTAMP},
+			</if>
+			<if test="informationId != null">
+				#{informationId,jdbcType=BIGINT},
+			</if>
+			<if test="userId != null">
+				#{userId,jdbcType=BIGINT},
+			</if>
+			<if test="pubUid != null">
+				#{pubUid,jdbcType=BIGINT},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=INTEGER},
+			</if>
+			<if test="content != null">
+				#{content,jdbcType=VARCHAR},
+			</if>
+			<if test="pubTime != null">
+				#{pubTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+
+	<!-- 根据主键更改一条记录 -->
+	<update id="updateByPrimaryKeySelective" parameterType="com.swift.jrmt.comment.model.Comment">
+		update comment
+		<set>
+			<if test="created != null">
+				created = #{created,jdbcType=TIMESTAMP},
+			</if>
+			<if test="deleted != null">
+				deleted = #{deleted,jdbcType=BIT},
+			</if>
+			<if test="updated != null">
+				updated = #{updated,jdbcType=TIMESTAMP},
+			</if>
+			<if test="informationId != null">
+				information_id = #{informationId,jdbcType=BIGINT},
+			</if>
+			<if test="userId != null">
+				user_id = #{userId,jdbcType=BIGINT},
+			</if>
+			<if test="pubUid != null">
+				pub_uid = #{pubUid,jdbcType=BIGINT},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=INTEGER},
+			</if>
+			<if test="content != null">
+				content = #{content,jdbcType=VARCHAR},
+			</if>
+			<if test="pubTime != null">
+				pub_time = #{pubTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+
+	<update id="updateByPrimaryKey" parameterType="com.swift.jrmt.comment.model.Comment">
+		update comment
+		set
+		created = #{created,jdbcType=TIMESTAMP},
+		deleted =
+		#{deleted,jdbcType=BIT},
+		updated = #{updated,jdbcType=TIMESTAMP},
+		information_id = #{informationId,jdbcType=BIGINT},
+		user_id =
+		#{userId,jdbcType=BIGINT},
+		pub_uid = #{pubUid,jdbcType=BIGINT},
+		status =
+		#{status,jdbcType=TINYINT},
+		content = #{content,jdbcType=VARCHAR},
+		pub_time = #{pubTime,jdbcType=TIMESTAMP}
+		where id =
+		#{id,jdbcType=BIGINT}
+	</update>
+
+	<!-- 自定义mapper 操作 -->
+	<!-- ***************************************ＡＰＰ********************************************* -->
+	<!-- 分页查询资讯评论sql -->
+	<select id="getCommentListPage" parameterType="com.swift.jrmt.comment.model.Comment"
+		resultMap="commentListResultMap">
+		select
+		userInfo.nickname ,
+		<include refid="Base_Column_List" />
+		from comment comment
+		left join user_info userInfo on comment.user_id = userInfo.user_id
+		where information_id=#{informationId,jdbcType=BIGINT} and comment.status =
+		#{status,jdbcType=INTEGER}
+		order by comment.updated desc
+	</select>
+	
+ 	<!-- ***************************************ＣＲＭ********************************************* -->
+	<!-- 分页获取评论列表 -->
+	<select id="crmGetCommentListPage" parameterType="com.swift.jrmt.comment.dto.CommentCrmDto"
+		resultMap="crmCommentListResultMap">
+		select <include refid="crmSelectColumnList"></include>
+			from comment com	
+			left join admin_user  aUser on com.pub_uid = aUser.id
+			left join information info on com.information_id = info.id
+		 where 1=1 
+			<if test="id != null">
+				AND com.id = #{id,jdbcType=BIGINT} 
+			</if>
+			 <if test="content != null">
+				AND com.content like  "%"#{content,jdbcType=VARCHAR}"%"
+			</if>
+			<if test="infoTitle != null">
+				AND info.title like "%"#{infoTitle,jdbcType=VARCHAR}"%"
+			</if> 
+			<if test="startDate != null">
+				AND com.created > #{startDate,jdbcType = DATE}
+			</if>
+			<if test="endDate != null">
+				AND #{endDate,jdbcType = DATE} > com.created
+			</if>
+			<if test="status != null">
+				AND com.status = #{status,jdbcType = BIGINT}
+			</if>
+			<if test = "status != null">
+			AND com.status!= -1
+			</if>
+			  order by com.created desc
+	</select>
+</mapper>
+

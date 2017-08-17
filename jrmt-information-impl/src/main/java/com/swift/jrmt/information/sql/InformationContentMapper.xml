@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.swift.jrmt.information.dao.InformationContentDao">
+
+	<resultMap id="BaseResultMap" type="com.swift.jrmt.information.model.InformationContent" >
+	    <id column="id" property="id" jdbcType="BIGINT" />
+	    <result column="created" property="created" jdbcType="TIMESTAMP" />
+	    <result column="deleted" property="deleted" jdbcType="BIT" />
+	    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+	    <result column="information_id" property="informationId"  jdbcType="BIGINT" />
+	    <result column="content" property="content" jdbcType="VARCHAR" />
+  	</resultMap>
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+			id,
+			created,
+			deleted,
+			updated,
+			information_id,
+			content
+
+	</sql>
+
+	<!-- 通用条件列-->
+	<sql id="Base_And">
+		<if test="id != null">
+		  and id=#{id,jdbcType=BIGINT}  
+		</if>
+		<if test="created != null">
+		  and created=#{created,jdbcType=TIMESTAMP}  
+		</if>
+		<if test="deleted != null">
+		  and deleted=#{deleted,jdbcType=BIT}  
+		</if>
+		<if test="updated != null">
+		  and updated=#{updated,jdbcType=TIMESTAMP}  
+		</if>
+		<if test="informationId != null">
+		  and information_id=#{informationId,jdbcType=BIGINT}  
+		</if>
+		<if test="content != null">
+		  and content=#{content,jdbcType=VARCHAR}  
+		</if>
+
+	</sql>
+
+	<!-- 查询单个对象方法-->
+	<select id="selectByPrimaryKey" parameterType="Long" resultType="com.swift.jrmt.information.model.InformationContent"  >
+		 select <include refid="Base_Column_List"/> 
+		  from information_content
+		  where 1=1 <include refid="Base_And"/> 
+	</select>
+	
+	<select id="findInformationContentModel" parameterType="com.swift.jrmt.information.dto.InformationContentDto" resultType="com.swift.jrmt.information.dto.InformationContentDto"  >
+		 select <include refid="Base_Column_List"/> 
+		  from information_content
+		  where 1=1 <include refid="Base_And"/> 
+	</select>
+
+	<!-- 添加 （匹配有值的字段）-->
+	<insert id="insertSelective" parameterType="com.swift.jrmt.information.model.InformationContent">
+		 INSERT INTO information_content
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="id != null">
+				 id,
+			</if>
+			<if test="created != null">
+				 created,
+			</if>
+			<if test="deleted != null">
+				 deleted,
+			</if>
+			<if test="updated != null">
+				 updated,
+			</if>
+			<if test="informationId != null">
+				 information_id,
+			</if>
+			<if test="content != null">
+				 content,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="id!=null">
+				 #{id, jdbcType=BIGINT},
+			</if>
+			<if test="created!=null">
+				 #{created, jdbcType=TIMESTAMP},
+			</if>
+			<if test="deleted!=null">
+				 #{deleted, jdbcType=BIT},
+			</if>
+			<if test="updated!=null">
+				 #{updated, jdbcType=TIMESTAMP},
+			</if>
+			<if test="informationId!=null">
+				 #{informationId, jdbcType=BIGINT},
+			</if>
+			<if test="content!=null">
+				 #{content, jdbcType=VARCHAR},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKeySelective" parameterType="com.swift.jrmt.information.model.InformationContent">
+		 UPDATE information_content
+ 		 <set> 
+			<if test="created != null">
+				 created = #{created, jdbcType=TIMESTAMP },
+			</if>
+			<if test="deleted != null">
+				 deleted = #{deleted,jdbcType=BIT },
+			</if>
+			<if test="updated != null">
+				 updated = #{updated, jdbcType=TIMESTAMP },
+			</if>
+			<if test="informationId != null">
+				 information_id = #{informationId, jdbcType=BIGINT },
+			</if>
+			<if test="content != null">
+				 content = #{content,jdbcType=VARCHAR },
+			</if>
+
+ 		 </set>
+		 WHERE id = #{id, jdbcType=BIGINT}
+	</update>
+
+	<!-- 删除-->
+	<delete id="deleteByPrimaryKey">
+		 delete from information_content  WHERE id = #{id, jdbcType=BIGINT}
+	</delete>
+
+
+</mapper>

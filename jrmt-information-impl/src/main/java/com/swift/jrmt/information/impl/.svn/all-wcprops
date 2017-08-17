@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/!svn/ver/42590/56kuaiche/trunk/jinrimeitan_server/jrmt-information-impl/src/main/java/com/swift/jrmt/information/impl
+END
+AudioServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/!svn/ver/42590/56kuaiche/trunk/jinrimeitan_server/jrmt-information-impl/src/main/java/com/swift/jrmt/information/impl/AudioServiceImpl.java
+END
+KeyWordServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/!svn/ver/42331/56kuaiche/trunk/jinrimeitan_server/jrmt-information-impl/src/main/java/com/swift/jrmt/information/impl/KeyWordServiceImpl.java
+END
+InformationTopServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/svn/!svn/ver/42505/56kuaiche/trunk/jinrimeitan_server/jrmt-information-impl/src/main/java/com/swift/jrmt/information/impl/InformationTopServiceImpl.java
+END
+AudioStatServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/svn/!svn/ver/42590/56kuaiche/trunk/jinrimeitan_server/jrmt-information-impl/src/main/java/com/swift/jrmt/information/impl/AudioStatServiceImpl.java
+END
+TagServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/!svn/ver/42316/56kuaiche/trunk/jinrimeitan_server/jrmt-information-impl/src/main/java/com/swift/jrmt/information/impl/TagServiceImpl.java
+END
+InformationServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/svn/!svn/ver/42590/56kuaiche/trunk/jinrimeitan_server/jrmt-information-impl/src/main/java/com/swift/jrmt/information/impl/InformationServiceImpl.java
+END
+InformationContentServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/svn/!svn/ver/42558/56kuaiche/trunk/jinrimeitan_server/jrmt-information-impl/src/main/java/com/swift/jrmt/information/impl/InformationContentServiceImpl.java
+END
+InformationStatServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/svn/!svn/ver/42590/56kuaiche/trunk/jinrimeitan_server/jrmt-information-impl/src/main/java/com/swift/jrmt/information/impl/InformationStatServiceImpl.java
+END
+InformationRightServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/svn/!svn/ver/42148/56kuaiche/trunk/jinrimeitan_server/jrmt-information-impl/src/main/java/com/swift/jrmt/information/impl/InformationRightServiceImpl.java
+END
+ChannelServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/!svn/ver/42505/56kuaiche/trunk/jinrimeitan_server/jrmt-information-impl/src/main/java/com/swift/jrmt/information/impl/ChannelServiceImpl.java
+END

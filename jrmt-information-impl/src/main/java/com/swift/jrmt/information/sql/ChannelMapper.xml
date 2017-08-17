@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.swift.jrmt.information.dao.ChannelDao">
+
+	<resultMap id="BaseResultMap" type="com.swift.jrmt.information.model.Channel" >
+	    <id column="id" property="id" jdbcType="BIGINT" />
+	    <result column="created" property="created" jdbcType="TIMESTAMP" />
+	    <result column="deleted" property="deleted" jdbcType="BIT" />
+	    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+	    <result column="user_id" property="userId" jdbcType="BIGINT" />
+	    <result column="pub_uid" property="pubUid" jdbcType="BIGINT" />
+	    <result column="status" property="status" jdbcType="INTEGER" />
+	    <result column="title" property="title" jdbcType="VARCHAR" />
+	    <result column="rank" property="rank" jdbcType="INTEGER"/>
+	    <result column="pub_time" property="pubTime" jdbcType="TIMESTAMP" />
+  	</resultMap>
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+			channel.id,
+			channel.created,
+			channel.updated,
+			channel.deleted,
+			channel.user_id,
+			channel.pub_uid,
+			channel.status,
+			channel.title,
+			channel.rank,
+			channel.pub_time
+
+	</sql>
+
+	<!-- 通用条件列-->
+	<sql id="Base_And">
+		<if test="id != null">
+		  and id=#{id,jdbcType=BIGINT}  
+		</if>
+		<if test="created != null">
+		  and created=#{created,jdbcType=TIMESTAMP}  
+		</if>
+		<if test="updated != null">
+		  and updated=#{updated,jdbcType=TIMESTAMP}  
+		</if>
+		<if test="deleted != null">
+		  and deleted=#{deleted,jdbcType=BIT}  
+		</if>
+		<if test="userId != null">
+		  and user_id=#{userId,jdbcType=BIGINT}  
+		</if>
+		<if test="pubUid != null">
+		  and pub_uid=#{pubUid,jdbcType=BIGINT}  
+		</if>
+		<if test="status != null">
+		  and status=#{status,jdbcType=INTEGER}  
+		</if>
+		<if test="title != null">
+		  and title like "%"#{title,jdbcType=VARCHAR}"%" 
+		</if>
+		<if test="rank != null">
+		  and rank=#{rank,jdbcType=INTEGER}  
+		</if>
+		<if test="pubTime != null">
+		  and pub_time=#{pubTime,jdbcType=TIMESTAMP}  
+		</if>
+
+	</sql>
+
+	<!-- 查询单个对象方法-->
+	<select id="selectByPrimaryKey" parameterType="com.swift.jrmt.information.model.Channel" resultMap="BaseResultMap" >
+		 select <include refid="Base_Column_List"/> 
+		  from channel
+		  where 1=1 <include refid="Base_And"/> 
+	</select>
+	
+	<select id="findChannelListPage" parameterType="com.swift.jrmt.information.model.Channel" resultType="com.swift.jrmt.information.dto.ChannelDto" >
+		 select channel.id,channel.title,channel.rank,channel.created,admin.username,auser.username  putUserName,channel.status
+		  from channel
+		  left join admin_user admin on channel.user_id = admin.id
+		  left join admin_user auser on channel.pub_uid = auser.id
+		  where 1=1 and channel.deleted = 0 <include refid="Base_And"/> 
+		  ORDER BY channel.created DESC
+	</select>
+
+	<!-- 添加 （匹配有值的字段）-->
+	<insert id="insertSelective" parameterType="com.swift.jrmt.information.model.Channel">
+		 INSERT INTO channel
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="id != null">
+				 id,
+			</if>
+			<if test="created != null">
+				 created,
+			</if>
+			<if test="updated != null">
+				 updated,
+			</if>
+			<if test="deleted != null">
+				 deleted,
+			</if>
+			<if test="userId != null">
+				 user_id,
+			</if>
+			<if test="pubUid != null">
+				 pub_uid,
+			</if>
+			<if test="status != null">
+				 status,
+			</if>
+			<if test="title != null">
+				 title,
+			</if>
+			<if test="rank != null">
+				 rank,
+			</if>
+			<if test="pubTime != null">
+				 pub_time,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="id!=null">
+				 #{id, jdbcType=BIGINT},
+			</if>
+			<if test="created!=null">
+				 #{created, jdbcType=TIMESTAMP},
+			</if>
+			<if test="updated!=null">
+				 #{updated, jdbcType=TIMESTAMP},
+			</if>
+			<if test="deleted!=null">
+				 #{deleted, jdbcType=BIT},
+			</if>
+			<if test="userId!=null">
+				 #{userId, jdbcType=BIGINT},
+			</if>
+			<if test="pubUid!=null">
+				 #{pubUid, jdbcType=BIGINT},
+			</if>
+			<if test="status!=null">
+				 #{status, jdbcType=INTEGER},
+			</if>
+			<if test="title!=null">
+				 #{title, jdbcType=VARCHAR},
+			</if>
+			<if test="rank!=null">
+				 #{rank, jdbcType=INTEGER},
+			</if>
+			<if test="pubTime!=null">
+				 #{pubTime, jdbcType=TIMESTAMP},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKeySelective" parameterType="com.swift.jrmt.information.model.Channel">
+		 UPDATE channel
+ 		 <set> 
+			<if test="created != null">
+				 created = #{created,jdbcType=TIMESTAMP },
+			</if>
+			<if test="updated != null">
+				 updated = #{updated, jdbcType=TIMESTAMP },
+			</if>
+			<if test="deleted != null">
+				 deleted = #{deleted, jdbcType=BIT },
+			</if>
+			<if test="userId != null">
+				 user_id = #{userId, jdbcType=BIGINT },
+			</if>
+			<if test="pubUid != null">
+				 pub_uid = #{pubUid, jdbcType=BIGINT },
+			</if>
+			<if test="status != null">
+				 status = #{status, jdbcType=INTEGER },
+			</if>
+			<if test="title != null">
+				 title = #{title, jdbcType=VARCHAR },
+			</if>
+			<if test="rank != null">
+				 rank = #{rank, jdbcType=INTEGER },
+			</if>
+			<if test="pubTime != null">
+				 pub_time = #{pubTime,jdbcType=TIMESTAMP },
+			</if>
+
+ 		 </set>
+		 WHERE id = #{id, jdbcType=BIGINT}
+	</update>
+
+	<!-- 删除-->
+	<delete id="deleteByPrimaryKey">
+		 delete from channel  WHERE id = #{id, jdbcType=BIGINT}
+	</delete>
+
+
+</mapper>

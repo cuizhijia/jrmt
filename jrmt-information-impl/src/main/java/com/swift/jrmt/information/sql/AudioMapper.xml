@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.swift.jrmt.information.dao.AudioDao">
+	<resultMap id="BaseResultMap" type="com.swift.jrmt.information.model.Audio" >
+	    <id column="id" property="id" jdbcType="BIGINT" />
+	    <result column="created" property="created" jdbcType="TIMESTAMP" />
+	    <result column="deleted" property="deleted" jdbcType="BIT" />
+	    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+	    <result column="title" property="title" jdbcType="VARCHAR" />
+	    <result column="status" property="status" jdbcType="INTEGER" />
+	    <result column="audio_time" property="audioTime" jdbcType="INTEGER" />
+	    <result column="audio_size" property="audioSize" jdbcType="INTEGER" />
+	    <result column="pic_url" property="picUrl" jdbcType="VARCHAR"/>
+	    <result column="audio_url" property="audioUrl" jdbcType="VARCHAR" />
+	    <result column="content_link" property="contentLink" jdbcType="VARCHAR" />
+	    <result column="share_link" property="shareLink" jdbcType="VARCHAR" />
+	    <result column="keywords" property="keywords" jdbcType="VARCHAR" />
+	    <result column="tags" property="tags" jdbcType="VARCHAR" />
+	    <result column="remark" property="remark" jdbcType="VARCHAR" />
+	    <result column="reject_reason" property="rejectReason" jdbcType="VARCHAR" />
+	    <result column="user_id" property="userId" jdbcType="BIGINT" />
+	    <result column="auditor_id" property="auditorId" jdbcType="BIGINT"/>
+	    <result column="singer" property="singer" jdbcType="VARCHAR" />
+	    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+	    <result column="pub_uid" property="pubUid" jdbcType="BIGINT" />
+	    <result column="pub_time" property="pubTime" jdbcType="TIMESTAMP" />
+	    <result column="album_id" property="albumId" jdbcType="BIGINT" />
+	    <result column="play_number" property = "playNumber" jdbcType="INTEGER" />
+  	</resultMap>
+	
+	
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+			id,
+			created,
+			deleted,
+			updated,
+			title,
+			status,
+			audio_time,
+			audio_size,
+			pic_url,
+			audio_url,
+			content_link,
+			share_link,
+			keywords,
+			tags,
+			remark,
+			reject_reason,
+			user_id,
+			auditor_id,
+			singer,
+			audit_time,
+			pub_uid,
+			pub_time,
+			album_id,
+			play_number
+
+	</sql>
+
+	<!-- 通用条件列-->
+	<sql id="Base_And">
+		<if test="id != null">
+		  and id=#{id,jdbcType=BIGINT}  
+		</if>
+		<if test="created != null">
+		  and created=#{created,jdbcType=TIMESTAMP}  
+		</if>
+		<if test="deleted != null">
+		  and deleted=#{deleted,jdbcType=BIT}  
+		</if>
+		<if test="updated != null">
+		  and updated=#{updated,jdbcType=TIMESTAMP}  
+		</if>
+		<if test="title != null">
+		  and title like "%"#{title,jdbcType=VARCHAR}"%"  
+		</if>
+		<if test="status != null">
+		  and status=#{status,jdbcType=INTEGER}  
+		</if>
+		<if test="audioTime != null">
+		  and audio_time=#{audioTime,jdbcType=INTEGER}  
+		</if>
+		<if test="audioSize != null">
+		  and audio_size=#{audioSize,jdbcType=INTEGER}  
+		</if>
+		<if test="picUrl != null">
+		  and pic_url=#{picUrl,jdbcType=VARCHAR}  
+		</if>
+		<if test="audioUrl != null">
+		  and audio_url=#{audioUrl,jdbcType=VARCHAR}  
+		</if>
+		<if test="contentLink != null">
+		  and content_link=#{contentLink,jdbcType=VARCHAR}  
+		</if>
+		<if test="shareLink != null">
+		  and share_link=#{shareLink,jdbcType=VARCHAR}  
+		</if>
+		<if test="keywords != null">
+		  and keywords=#{keywords,jdbcType=VARCHAR}  
+		</if>
+		<if test="tags != null">
+		  and tags=#{tags,jdbcType=VARCHAR}  
+		</if>
+		<if test="remark != null">
+		  and remark=#{remark,jdbcType=VARCHAR}  
+		</if>
+		<if test="rejectReason != null">
+		  and reject_reason=#{rejectReason,jdbcType=VARCHAR}  
+		</if>
+		<if test="userId != null">
+		  and user_id=#{userId,jdbcType=BIGINT}  
+		</if>
+		<if test="auditorId != null">
+		  and auditor_id=#{auditorId,jdbcType=BIGINT}  
+		</if>
+		<if test="singer != null">
+		  and singer=#{singer,jdbcType=VARCHAR}  
+		</if>
+		<if test="auditTime != null">
+		  and audit_time=#{auditTime,jdbcType=TIMESTAMP}  
+		</if>
+		<if test="pubUid != null">
+		  and pub_uid=#{pubUid,jdbcType=BIGINT}  
+		</if>
+		<if test="pubTime != null">
+		  and pub_time=#{pubTime,jdbcType=TIMESTAMP}  
+		</if>
+		<if test="albumId != null">
+		  and album_id=#{albumId,jdbcType=BIGINT}  
+		</if>
+		<if test="playNumber != null">
+		  and play_number=#{playNumber,jdbcType=INTEGER}  
+		</if>
+		 <if test="startCreatedTime != null  and startCreatedTime !=''">
+             <![CDATA[ AND created >= #{startCreatedTime,jdbcType=TIMESTAMP} ]]>
+         </if>
+         <if test="endCreatedTime != null  and endCreatedTime !=''">
+             <![CDATA[ AND created <= #{endCreatedTime,jdbcType=TIMESTAMP} ]]>
+         </if>
+         <if test="startPubTime != null  and startPubTime !=''">
+             <![CDATA[ AND pub_time >= #{startPubTime,jdbcType=TIMESTAMP} ]]>
+         </if>
+         <if test="endPubTime != null  and endPubTime !=''">
+             <![CDATA[ AND pub_time <= #{endPubTime,jdbcType=TIMESTAMP} ]]>
+         </if>
+	</sql>
+
+	<!-- 查询单个对象方法-->
+	<select id="selectByPrimaryKey" parameterType="Long" resultType="com.swift.jrmt.information.model.Audio"  >
+		 select <include refid="Base_Column_List"/> 
+		  from audio
+		  where  id = #{id, jdbcType=BIGINT}
+	</select>
+	
+	<select id="findAudioListPage" parameterType="com.swift.jrmt.information.model.Audio" resultType="com.swift.jrmt.information.dto.AudioDto" >
+		select audio.id ,audio.title,audio.audio_time,audio.audio_size,audio.created,audio.pub_time,audio.user_id,audio.auditor_id,
+		audio.status,audio.play_number,auser.username createUser,puser.username auditorUser
+		from audio
+		LEFT JOIN admin_user auser ON audio.user_id = auser.id
+		LEFT JOIN admin_user puser ON audio.auditor_id = puser.id
+		  where 1=1 and audio.deleted = 0 <include refid="Base_And"/> 
+	</select>
+	
+	
+
+	<!-- 添加 （匹配有值的字段）-->
+	<insert id="insertSelective" parameterType="com.swift.jrmt.information.model.Audio">
+		 INSERT INTO audio
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="id != null">
+				 id,
+			</if>
+			<if test="created != null">
+				 created,
+			</if>
+			<if test="deleted != null">
+				 deleted,
+			</if>
+			<if test="updated != null">
+				 updated,
+			</if>
+			<if test="title != null">
+				 title,
+			</if>
+			<if test="status != null">
+				 status,
+			</if>
+			<if test="audioTime != null">
+				 audio_time,
+			</if>
+			<if test="audioSize != null">
+				 audio_size,
+			</if>
+			<if test="picUrl != null">
+				 pic_url,
+			</if>
+			<if test="audioUrl != null">
+				 audio_url,
+			</if>
+			<if test="contentLink != null">
+				 content_link,
+			</if>
+			<if test="shareLink != null">
+				 share_link,
+			</if>
+			<if test="keywords != null">
+				 keywords,
+			</if>
+			<if test="tags != null">
+				 tags,
+			</if>
+			<if test="remark != null">
+				 remark,
+			</if>
+			<if test="rejectReason != null">
+				 reject_reason,
+			</if>
+			<if test="userId != null">
+				 user_id,
+			</if>
+			<if test="auditorId != null">
+				 auditor_id,
+			</if>
+			<if test="singer != null">
+				 singer,
+			</if>
+			<if test="auditTime != null">
+				 audit_time,
+			</if>
+			<if test="pubUid != null">
+				 pub_uid,
+			</if>
+			<if test="pubTime != null">
+				 pub_time,
+			</if>
+			<if test="albumId != null">
+				 album_id,
+			</if>
+			<if test="playNumber != null">
+				 play_number,
+			</if>
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="id!=null">
+				 #{id, jdbcType=BIGINT},
+			</if>
+			<if test="created!=null">
+				 #{created,jdbcType= TIMESTAMP},
+			</if>
+			<if test="deleted!=null">
+				 #{deleted,jdbcType= BIT},
+			</if>
+			<if test="updated!=null">
+				 #{updated, jdbcType=TIMESTAMP},
+			</if>
+			<if test="title!=null">
+				 #{title, jdbcType=VARCHAR},
+			</if>
+			<if test="status!=null">
+				 #{status,jdbcType= INTEGER},
+			</if>
+			<if test="audioTime!=null">
+				 #{audioTime, jdbcType=INTEGER},
+			</if>
+			<if test="audioSize!=null">
+				 #{audioSize, jdbcType=INTEGER},
+			</if>
+			<if test="picUrl!=null">
+				 #{picUrl, jdbcType=VARCHAR},
+			</if>
+			<if test="audioUrl!=null">
+				 #{audioUrl, jdbcType=VARCHAR},
+			</if>
+			<if test="contentLink!=null">
+				 #{contentLink, jdbcType=VARCHAR},
+			</if>
+			<if test="shareLink!=null">
+				 #{shareLink, jdbcType=VARCHAR},
+			</if>
+			<if test="keywords!=null">
+				 #{keywords, jdbcType=VARCHAR},
+			</if>
+			<if test="tags!=null">
+				 #{tags, jdbcType=VARCHAR},
+			</if>
+			<if test="remark!=null">
+				 #{remark, jdbcType=VARCHAR},
+			</if>
+			<if test="rejectReason!=null">
+				 #{rejectReason, jdbcType=VARCHAR},
+			</if>
+			<if test="userId!=null">
+				 #{userId, jdbcType=BIGINT},
+			</if>
+			<if test="auditorId!=null">
+				 #{auditorId, jdbcType=BIGINT},
+			</if>
+			<if test="singer!=null">
+				 #{singer, jdbcType=VARCHAR},
+			</if>
+			<if test="auditTime!=null">
+				 #{auditTime,jdbcType= TIMESTAMP},
+			</if>
+			<if test="pubUid!=null">
+				 #{pubUid, jdbcType=BIGINT},
+			</if>
+			<if test="pubTime!=null">
+				 #{pubTime,jdbcType= TIMESTAMP},
+			</if>
+			<if test="albumId!=null">
+				 #{albumId,jdbcType= BIGINT},
+			</if>
+			<if test="playNumber != null">
+		  		#{playNumber,jdbcType=INTEGER},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKeySelective" parameterType="com.swift.jrmt.information.model.Audio">
+		 UPDATE audio
+ 		 <set> 
+			<if test="created != null">
+				 created = #{created, jdbcType=TIMESTAMP },
+			</if>
+			<if test="deleted != null">
+				 deleted = #{deleted,jdbcType= BIT },
+			</if>
+			<if test="updated != null">
+				 updated = #{updated,jdbcType= TIMESTAMP },
+			</if>
+			<if test="title != null">
+				 title = #{title, jdbcType=VARCHAR },
+			</if>
+			<if test="status != null">
+				 status = #{status, jdbcType=INTEGER },
+			</if>
+			<if test="audioTime != null">
+				 audio_time = #{audioTime,jdbcType= INTEGER },
+			</if>
+			<if test="audioSize != null">
+				 audio_size = #{audioSize,jdbcType= INTEGER },
+			</if>
+			<if test="picUrl != null">
+				 pic_url = #{picUrl, jdbcType=VARCHAR },
+			</if>
+			<if test="audioUrl != null">
+				 audio_url = #{audioUrl, jdbcType=VARCHAR },
+			</if>
+			<if test="contentLink != null">
+				 content_link = #{contentLink, jdbcType=VARCHAR },
+			</if>
+			<if test="shareLink != null">
+				 share_link = #{shareLink, jdbcType=VARCHAR },
+			</if>
+			<if test="keywords != null">
+				 keywords = #{keywords, jdbcType=VARCHAR },
+			</if>
+			<if test="tags != null">
+				 tags = #{tags, jdbcType=VARCHAR },
+			</if>
+			<if test="remark != null">
+				 remark = #{remark, jdbcType=VARCHAR },
+			</if>
+			<if test="rejectReason != null">
+				 reject_reason = #{rejectReason, jdbcType=VARCHAR },
+			</if>
+			<if test="userId != null">
+				 user_id = #{userId, jdbcType=BIGINT },
+			</if>
+			<if test="auditorId != null">
+				 auditor_id = #{auditorId,jdbcType= BIGINT },
+			</if>
+			<if test="singer != null">
+				 singer = #{singer, jdbcType=VARCHAR },
+			</if>
+			<if test="auditTime != null">
+				 audit_time = #{auditTime,jdbcType= TIMESTAMP },
+			</if>
+			<if test="pubUid != null">
+				 pub_uid = #{pubUid,jdbcType= BIGINT },
+			</if>
+			<if test="pubTime != null">
+				 pub_time = #{pubTime, jdbcType=TIMESTAMP },
+			</if>
+			<if test="albumId != null">
+				 album_id = #{albumId,jdbcType= BIGINT },
+			</if>
+			<if test="playNumber != null">
+		  		 play_number=#{playNumber,jdbcType=INTEGER}  
+			</if>
+
+ 		 </set>
+		 WHERE id = #{id, jdbcType=BIGINT}
+	</update>
+
+	<!-- 物理删除-->
+	<delete id="deleteByPrimaryKey">
+		 delete from audio  WHERE id = #{id, jdbcType=BIGINT}
+	</delete>
+
+
+</mapper>

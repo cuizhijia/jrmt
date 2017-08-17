@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/!svn/ver/42606/56kuaiche/trunk/jinrimeitan_server/jrmt-jpush-impl/src/main/java/com/swift/jrmt/sql
+END
+PushMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/!svn/ver/42580/56kuaiche/trunk/jinrimeitan_server/jrmt-jpush-impl/src/main/java/com/swift/jrmt/sql/PushMapper.xml
+END
+CommentMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/!svn/ver/42606/56kuaiche/trunk/jinrimeitan_server/jrmt-jpush-impl/src/main/java/com/swift/jrmt/sql/CommentMapper.xml
+END
+AdOpeningScreenMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/!svn/ver/42587/56kuaiche/trunk/jinrimeitan_server/jrmt-jpush-impl/src/main/java/com/swift/jrmt/sql/AdOpeningScreenMapper.xml
+END

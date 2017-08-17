@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.swift.jrmt.jpush.dao.PushDao" >
+  <resultMap id="BaseResultMap" type="com.swift.jrmt.jpush.model.Push" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="deleted" property="deleted" jdbcType="BIT" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="information_id" property="informationId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="pub_uid" property="pubUid" jdbcType="BIGINT" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="push_time" property="pushTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, created, deleted, updated, type, information_id, user_id, pub_uid, status, push_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from push
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="queryPushListPage" resultMap="BaseResultMap" parameterType="com.swift.jrmt.common.page.PageJrmt" >
+    select 
+    <include refid="Base_Column_List" />
+    from push
+    ${sqlCondition} ${orderBy}
+  </select>  
+  <select id="queryPushByPt" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from push
+    where deleted=0  and STATUS=1 and  NOW()>=push_time 
+  </select>  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from push
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.swift.jrmt.jpush.model.Push" >
+    insert into push (id, created, deleted, 
+      updated, type, information_id, 
+      user_id, pub_uid, status, 
+      push_time)
+    values (#{id,jdbcType=BIGINT}, #{created,jdbcType=TIMESTAMP}, #{deleted,jdbcType=BIT}, 
+      #{updated,jdbcType=TIMESTAMP}, #{type,jdbcType=INTEGER}, #{informationId,jdbcType=BIGINT}, 
+      #{userId,jdbcType=BIGINT}, #{pubUid,jdbcType=BIGINT}, #{status,jdbcType=INTEGER}, 
+      #{pushTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.swift.jrmt.jpush.model.Push" >
+    insert into push
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+      <if test="updated != null" >
+        updated,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="informationId != null" >
+        information_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="pubUid != null" >
+        pub_uid,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="pushTime != null" >
+        push_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=BIT},
+      </if>
+      <if test="updated != null" >
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="informationId != null" >
+        #{informationId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="pubUid != null" >
+        #{pubUid,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="pushTime != null" >
+        #{pushTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.swift.jrmt.jpush.model.Push" >
+    update push
+    <set >
+      <if test="created != null" >
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
+      <if test="updated != null" >
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="informationId != null" >
+        information_id = #{informationId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="pubUid != null" >
+        pub_uid = #{pubUid,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="pushTime != null" >
+        push_time = #{pushTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.swift.jrmt.jpush.model.Push" >
+    update push
+    set created = #{created,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=BIT},
+      updated = #{updated,jdbcType=TIMESTAMP},
+      type = #{type,jdbcType=INTEGER},
+      information_id = #{informationId,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=BIGINT},
+      pub_uid = #{pubUid,jdbcType=BIGINT},
+      status = #{status,jdbcType=INTEGER},
+      push_time = #{pushTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/42613/56kuaiche/trunk/jinrimeitan_server/jrmt-jpush-impl/src/main/resources
+END
+log4j.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/42282/56kuaiche/trunk/jinrimeitan_server/jrmt-jpush-impl/src/main/resources/log4j.xml
+END
+spring.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/42368/56kuaiche/trunk/jinrimeitan_server/jrmt-jpush-impl/src/main/resources/spring.xml
+END
+jdbc.properties
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/42367/56kuaiche/trunk/jinrimeitan_server/jrmt-jpush-impl/src/main/resources/jdbc.properties
+END
+dubbo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/42613/56kuaiche/trunk/jinrimeitan_server/jrmt-jpush-impl/src/main/resources/dubbo.xml
+END
+spring-mybatis.xml
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/42385/56kuaiche/trunk/jinrimeitan_server/jrmt-jpush-impl/src/main/resources/spring-mybatis.xml
+END

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/42575/56kuaiche/trunk/jinrimeitan_server/jrmt-task/src/main/resources
+END
+spring-mvc.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/42390/56kuaiche/trunk/jinrimeitan_server/jrmt-task/src/main/resources/spring-mvc.xml
+END
+log4j.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/42390/56kuaiche/trunk/jinrimeitan_server/jrmt-task/src/main/resources/log4j.xml
+END
+redis.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/42390/56kuaiche/trunk/jinrimeitan_server/jrmt-task/src/main/resources/redis.xml
+END
+spring.xml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/42390/56kuaiche/trunk/jinrimeitan_server/jrmt-task/src/main/resources/spring.xml
+END
+jdbc.properties
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/42390/56kuaiche/trunk/jinrimeitan_server/jrmt-task/src/main/resources/jdbc.properties
+END
+dubbo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/42575/56kuaiche/trunk/jinrimeitan_server/jrmt-task/src/main/resources/dubbo.xml
+END

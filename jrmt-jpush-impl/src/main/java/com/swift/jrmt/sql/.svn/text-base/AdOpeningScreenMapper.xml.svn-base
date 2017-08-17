@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="test.IDao.AdOpeningScreenMapper" >
+  <resultMap id="BaseResultMap" type="com.swift.jrmt.adopeningscreen.model.AdOpeningScreen" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="deleted" property="deleted" jdbcType="BIT" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    <result column="auditor_id" property="auditorId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="pub_uid" property="pubUid" jdbcType="BIGINT" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="ad_type" property="adType" jdbcType="INTEGER" />
+    <result column="ad_link_url" property="adLinkUrl" jdbcType="VARCHAR" />
+    <result column="pic_url" property="picUrl" jdbcType="VARCHAR" />
+    <result column="ad_customer" property="adCustomer" jdbcType="VARCHAR" />
+    <result column="ad_manager" property="adManager" jdbcType="VARCHAR" />
+    <result column="ad_remarks" property="adRemarks" jdbcType="VARCHAR" />
+    <result column="reject_reason" property="rejectReason" jdbcType="VARCHAR" />
+    <result column="ad_name" property="adName" jdbcType="VARCHAR" />
+    <result column="display_time_start" property="displayTimeStart" jdbcType="TIMESTAMP" />
+    <result column="display_time_end" property="displayTimeEnd" jdbcType="TIMESTAMP" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="pub_time" property="pubTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, created, deleted, updated, auditor_id, user_id, pub_uid, status, ad_type, ad_link_url, 
+    pic_url, ad_customer, ad_manager, ad_remarks, reject_reason, ad_name, display_time_start, 
+    display_time_end, audit_time, pub_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from ad_opening_screen
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="queryAdOpeningScreenListPage" resultMap="BaseResultMap" parameterType="com.swift.jrmt.common.page.PageJrmt" >
+    select 
+    <include refid="Base_Column_List" />
+    from ad_opening_screen
+    ${sqlCondition} ${orderBy}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from ad_opening_screen
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.swift.jrmt.adopeningscreen.model.AdOpeningScreen" >
+    insert into ad_opening_screen (id, created, deleted, 
+      updated, auditor_id, user_id, 
+      pub_uid, status, ad_type, 
+      ad_link_url, pic_url, ad_customer, 
+      ad_manager, ad_remarks, reject_reason, 
+      ad_name, display_time_start, display_time_end, 
+      audit_time, pub_time)
+    values (#{id,jdbcType=BIGINT}, #{created,jdbcType=TIMESTAMP}, #{deleted,jdbcType=BIT}, 
+      #{updated,jdbcType=TIMESTAMP}, #{auditorId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
+      #{pubUid,jdbcType=BIGINT}, #{status,jdbcType=INTEGER}, #{adType,jdbcType=INTEGER}, 
+      #{adLinkUrl,jdbcType=VARCHAR}, #{picUrl,jdbcType=VARCHAR}, #{adCustomer,jdbcType=VARCHAR}, 
+      #{adManager,jdbcType=VARCHAR}, #{adRemarks,jdbcType=VARCHAR}, #{rejectReason,jdbcType=VARCHAR}, 
+      #{adName,jdbcType=VARCHAR}, #{displayTimeStart,jdbcType=TIMESTAMP}, #{displayTimeEnd,jdbcType=TIMESTAMP}, 
+      #{auditTime,jdbcType=TIMESTAMP}, #{pubTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.swift.jrmt.adopeningscreen.model.AdOpeningScreen" >
+    insert into ad_opening_screen
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+      <if test="updated != null" >
+        updated,
+      </if>
+      <if test="auditorId != null" >
+        auditor_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="pubUid != null" >
+        pub_uid,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="adType != null" >
+        ad_type,
+      </if>
+      <if test="adLinkUrl != null" >
+        ad_link_url,
+      </if>
+      <if test="picUrl != null" >
+        pic_url,
+      </if>
+      <if test="adCustomer != null" >
+        ad_customer,
+      </if>
+      <if test="adManager != null" >
+        ad_manager,
+      </if>
+      <if test="adRemarks != null" >
+        ad_remarks,
+      </if>
+      <if test="rejectReason != null" >
+        reject_reason,
+      </if>
+      <if test="adName != null" >
+        ad_name,
+      </if>
+      <if test="displayTimeStart != null" >
+        display_time_start,
+      </if>
+      <if test="displayTimeEnd != null" >
+        display_time_end,
+      </if>
+      <if test="auditTime != null" >
+        audit_time,
+      </if>
+      <if test="pubTime != null" >
+        pub_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=BIT},
+      </if>
+      <if test="updated != null" >
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditorId != null" >
+        #{auditorId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="pubUid != null" >
+        #{pubUid,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="adType != null" >
+        #{adType,jdbcType=INTEGER},
+      </if>
+      <if test="adLinkUrl != null" >
+        #{adLinkUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="picUrl != null" >
+        #{picUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="adCustomer != null" >
+        #{adCustomer,jdbcType=VARCHAR},
+      </if>
+      <if test="adManager != null" >
+        #{adManager,jdbcType=VARCHAR},
+      </if>
+      <if test="adRemarks != null" >
+        #{adRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="rejectReason != null" >
+        #{rejectReason,jdbcType=VARCHAR},
+      </if>
+      <if test="adName != null" >
+        #{adName,jdbcType=VARCHAR},
+      </if>
+      <if test="displayTimeStart != null" >
+        #{displayTimeStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="displayTimeEnd != null" >
+        #{displayTimeEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditTime != null" >
+        #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pubTime != null" >
+        #{pubTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.swift.jrmt.adopeningscreen.model.AdOpeningScreen" >
+    update ad_opening_screen
+    <set >
+      <if test="created != null" >
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
+      <if test="updated != null" >
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditorId != null" >
+        auditor_id = #{auditorId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="pubUid != null" >
+        pub_uid = #{pubUid,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="adType != null" >
+        ad_type = #{adType,jdbcType=INTEGER},
+      </if>
+      <if test="adLinkUrl != null" >
+        ad_link_url = #{adLinkUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="picUrl != null" >
+        pic_url = #{picUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="adCustomer != null" >
+        ad_customer = #{adCustomer,jdbcType=VARCHAR},
+      </if>
+      <if test="adManager != null" >
+        ad_manager = #{adManager,jdbcType=VARCHAR},
+      </if>
+      <if test="adRemarks != null" >
+        ad_remarks = #{adRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="rejectReason != null" >
+        reject_reason = #{rejectReason,jdbcType=VARCHAR},
+      </if>
+      <if test="adName != null" >
+        ad_name = #{adName,jdbcType=VARCHAR},
+      </if>
+      <if test="displayTimeStart != null" >
+        display_time_start = #{displayTimeStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="displayTimeEnd != null" >
+        display_time_end = #{displayTimeEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditTime != null" >
+        audit_time = #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pubTime != null" >
+        pub_time = #{pubTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.swift.jrmt.adopeningscreen.model.AdOpeningScreen" >
+    update ad_opening_screen
+    set created = #{created,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=BIT},
+      updated = #{updated,jdbcType=TIMESTAMP},
+      auditor_id = #{auditorId,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=BIGINT},
+      pub_uid = #{pubUid,jdbcType=BIGINT},
+      status = #{status,jdbcType=INTEGER},
+      ad_type = #{adType,jdbcType=INTEGER},
+      ad_link_url = #{adLinkUrl,jdbcType=VARCHAR},
+      pic_url = #{picUrl,jdbcType=VARCHAR},
+      ad_customer = #{adCustomer,jdbcType=VARCHAR},
+      ad_manager = #{adManager,jdbcType=VARCHAR},
+      ad_remarks = #{adRemarks,jdbcType=VARCHAR},
+      reject_reason = #{rejectReason,jdbcType=VARCHAR},
+      ad_name = #{adName,jdbcType=VARCHAR},
+      display_time_start = #{displayTimeStart,jdbcType=TIMESTAMP},
+      display_time_end = #{displayTimeEnd,jdbcType=TIMESTAMP},
+      audit_time = #{auditTime,jdbcType=TIMESTAMP},
+      pub_time = #{pubTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

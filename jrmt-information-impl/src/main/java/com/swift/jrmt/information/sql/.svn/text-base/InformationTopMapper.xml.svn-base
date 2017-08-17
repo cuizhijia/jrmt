@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.swift.jrmt.information.dao.InformationTopDao">
+	
+	<resultMap id="BaseResultMap" type="com.swift.jrmt.information.model.InformationTop" >
+	    <id column="id" property="id" jdbcType="BIGINT" />
+	    <result column="created" property="created" jdbcType="TIMESTAMP" />
+	    <result column="deleted" property="deleted" jdbcType="BIT" />
+	    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+	    <result column="channel_id" property="channelId" jdbcType="BIGINT" />
+	    <result column="information_id" property="informationId" jdbcType="BIGINT" />
+	    <result column="pub_time" property="pubTime" jdbcType="TIMESTAMP" />
+	    <result column="pub_uid" property="pubUid" jdbcType="BIGINT" />
+	    <result column="user_id" property="userId" jdbcType="BIGINT"/>
+	    <result column="status" property="status" jdbcType="INTEGER" />
+  	</resultMap>
+	
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+			id,
+			created,
+			deleted,
+			updated,
+			channel_id,
+			information_id,
+			pub_time,
+			pub_uid,
+			user_id,
+			status
+
+	</sql>
+
+	<!-- 通用条件列-->
+	<sql id="Base_And">
+		<if test="id != null">
+		  and id=#{id,jdbcType= BIGINT}  
+		</if>
+		<if test="created != null">
+		  and created=#{created,jdbcType= TIMESTAMP}  
+		</if>
+		<if test="deleted != null">
+		  and deleted=#{deleted,jdbcType= BIT}  
+		</if>
+		<if test="updated != null">
+		  and updated=#{updated,jdbcType= TIMESTAMP}  
+		</if>
+		<if test="channelId != null">
+		  and channel_id=#{channelId,jdbcType= BIGINT}  
+		</if>
+		<if test="informationId != null">
+		  and information_id=#{informationId,jdbcType= BIGINT}  
+		</if>
+		<if test="pubTime != null">
+		  and pub_time=#{pubTime,jdbcType= TIMESTAMP}  
+		</if>
+		<if test="pubUid != null">
+		  and pub_uid=#{pubUid,jdbcType= BIGINT}  
+		</if>
+		<if test="userId != null">
+		  and user_id=#{userId,jdbcType= BIGINT}  
+		</if>
+		<if test="status != null">
+		  and status=#{status,jdbcType= INTEGER}  
+		</if>
+
+	</sql>
+
+	<!-- 查询单个对象方法-->
+	<select id="selectByPrimaryKey" parameterType="com.swift.jrmt.information.model.InformationTop" resultType="com.swift.jrmt.information.model.InformationTop">
+		 select <include refid="Base_Column_List"/> 
+		  from information_top
+		  where 1=1 <include refid="Base_And"/> 
+	</select>
+	
+	<select id="findInformationTopListPage"  parameterType="com.swift.jrmt.information.dto.InformationTopDto" resultType="com.swift.jrmt.information.dto.InformationTopDto">
+		select intop.id,channel.title channelTitle,intop.updated,intop.pub_time,stat.visit_num,stat.comment_num,intop.status,
+		stat.praise_num,stat.critical_num,stat.share_num,stat.collect_num,auser.username auserName,puser.username puserName,information.title  informationTitle
+		from information_top intop
+		LEFT JOIN channel ON intop.channel_id = channel.id
+		LEFT JOIN admin_user auser ON intop.user_id = auser.id
+		LEFT JOIN admin_user puser ON intop.pub_uid = puser.id
+		LEFT JOIN information ON intop.information_id = information.id
+		LEFT JOIN information_stat stat ON intop.information_id = stat.information_id
+		where 1=1 <include refid="Base_And"/> 
+	</select>
+
+	<!-- 添加 （匹配有值的字段）-->
+	<insert id="insertSelective" parameterType="com.swift.jrmt.information.model.InformationTop">
+		 INSERT INTO information_top
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="id != null">
+				 id,
+			</if>
+			<if test="created != null">
+				 created,
+			</if>
+			<if test="deleted != null">
+				 deleted,
+			</if>
+			<if test="updated != null">
+				 updated,
+			</if>
+			<if test="channelId != null">
+				 channel_id,
+			</if>
+			<if test="informationId != null">
+				 information_id,
+			</if>
+			<if test="pubTime != null">
+				 pub_time,
+			</if>
+			<if test="pubUid != null">
+				 pub_uid,
+			</if>
+			<if test="userId != null">
+				 user_id,
+			</if>
+			<if test="status != null">
+				 status,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="id!=null">
+				 #{id, jdbcType= BIGINT},
+			</if>
+			<if test="created!=null">
+				 #{created, jdbcType=TIMESTAMP},
+			</if>
+			<if test="deleted!=null">
+				 #{deleted, jdbcType=BIT},
+			</if>
+			<if test="updated!=null">
+				 #{updated, jdbcType=TIMESTAMP},
+			</if>
+			<if test="channelId!=null">
+				 #{channelId,jdbcType= BIGINT},
+			</if>
+			<if test="informationId!=null">
+				 #{informationId,jdbcType= BIGINT},
+			</if>
+			<if test="pubTime!=null">
+				 #{pubTime, jdbcType=TIMESTAMP},
+			</if>
+			<if test="pubUid!=null">
+				 #{pubUid, jdbcType=BIGINT},
+			</if>
+			<if test="userId!=null">
+				 #{userId, jdbcType=BIGINT},
+			</if>
+			<if test="status!=null">
+				 #{status, jdbcType=INTEGER},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKeySelective" parameterType="com.swift.jrmt.information.model.InformationTop">
+		 UPDATE information_top
+ 		 <set> 
+			<if test="created != null">
+				 created = #{created, jdbcType=TIMESTAMP },
+			</if>
+			<if test="deleted != null">
+				 deleted = #{deleted, jdbcType=BIT },
+			</if>
+			<if test="updated != null">
+				 updated = #{updated, jdbcType=TIMESTAMP },
+			</if>
+			<if test="channelId != null">
+				 channel_id = #{channelId, jdbcType=BIGINT },
+			</if>
+			<if test="informationId != null">
+				 information_id = #{informationId,jdbcType= BIGINT },
+			</if>
+			<if test="pubTime != null">
+				 pub_time = #{pubTime,jdbcType= TIMESTAMP },
+			</if>
+			<if test="pubUid != null">
+				 pub_uid = #{pubUid,jdbcType= BIGINT },
+			</if>
+			<if test="userId != null">
+				 user_id = #{userId,jdbcType= BIGINT },
+			</if>
+			<if test="status != null">
+				 status = #{status,jdbcType= INTEGER },
+			</if>
+
+ 		 </set>
+		 WHERE id = #{id,jdbcType=BIGINT}
+	</update>
+
+	<!-- 删除-->
+	<delete id="deleteByPrimaryKey">
+		 delete from information_top  WHERE id = #{id, jdbcType=BIGINT}
+	</delete>
+
+
+</mapper>

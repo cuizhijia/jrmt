@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/!svn/ver/42590/56kuaiche/trunk/jinrimeitan_server/jrmt-information-impl/src/main/java/com/swift/jrmt/information/dao
+END
+ChannelDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/!svn/ver/42315/56kuaiche/trunk/jinrimeitan_server/jrmt-information-impl/src/main/java/com/swift/jrmt/information/dao/ChannelDao.java
+END
+AudioDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/!svn/ver/42507/56kuaiche/trunk/jinrimeitan_server/jrmt-information-impl/src/main/java/com/swift/jrmt/information/dao/AudioDao.java
+END
+KeyWordDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/!svn/ver/42315/56kuaiche/trunk/jinrimeitan_server/jrmt-information-impl/src/main/java/com/swift/jrmt/information/dao/KeyWordDao.java
+END
+InformationTopDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/!svn/ver/42504/56kuaiche/trunk/jinrimeitan_server/jrmt-information-impl/src/main/java/com/swift/jrmt/information/dao/InformationTopDao.java
+END
+TagDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/!svn/ver/42315/56kuaiche/trunk/jinrimeitan_server/jrmt-information-impl/src/main/java/com/swift/jrmt/information/dao/TagDao.java
+END
+AudioStatDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/!svn/ver/42590/56kuaiche/trunk/jinrimeitan_server/jrmt-information-impl/src/main/java/com/swift/jrmt/information/dao/AudioStatDao.java
+END
+InformationDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/!svn/ver/42514/56kuaiche/trunk/jinrimeitan_server/jrmt-information-impl/src/main/java/com/swift/jrmt/information/dao/InformationDao.java
+END
+InformationContentDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/svn/!svn/ver/42558/56kuaiche/trunk/jinrimeitan_server/jrmt-information-impl/src/main/java/com/swift/jrmt/information/dao/InformationContentDao.java
+END
+InformationStatDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn/!svn/ver/42590/56kuaiche/trunk/jinrimeitan_server/jrmt-information-impl/src/main/java/com/swift/jrmt/information/dao/InformationStatDao.java
+END
+InformationRightDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/!svn/ver/42138/56kuaiche/trunk/jinrimeitan_server/jrmt-information-impl/src/main/java/com/swift/jrmt/information/dao/InformationRightDao.java
+END

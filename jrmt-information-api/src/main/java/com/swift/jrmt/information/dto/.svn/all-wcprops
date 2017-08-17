@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/!svn/ver/42594/56kuaiche/trunk/jinrimeitan_server/jrmt-information-api/src/main/java/com/swift/jrmt/information/dto
+END
+InformationStatDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/!svn/ver/42560/56kuaiche/trunk/jinrimeitan_server/jrmt-information-api/src/main/java/com/swift/jrmt/information/dto/InformationStatDto.java
+END
+ChannelDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/!svn/ver/42243/56kuaiche/trunk/jinrimeitan_server/jrmt-information-api/src/main/java/com/swift/jrmt/information/dto/ChannelDto.java
+END
+AudioDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/!svn/ver/42402/56kuaiche/trunk/jinrimeitan_server/jrmt-information-api/src/main/java/com/swift/jrmt/information/dto/AudioDto.java
+END
+InformationTopDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/!svn/ver/42521/56kuaiche/trunk/jinrimeitan_server/jrmt-information-api/src/main/java/com/swift/jrmt/information/dto/InformationTopDto.java
+END
+KeyWordDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/!svn/ver/42205/56kuaiche/trunk/jinrimeitan_server/jrmt-information-api/src/main/java/com/swift/jrmt/information/dto/KeyWordDto.java
+END
+TagDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/!svn/ver/42205/56kuaiche/trunk/jinrimeitan_server/jrmt-information-api/src/main/java/com/swift/jrmt/information/dto/TagDto.java
+END
+AudioStatDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/!svn/ver/42594/56kuaiche/trunk/jinrimeitan_server/jrmt-information-api/src/main/java/com/swift/jrmt/information/dto/AudioStatDto.java
+END
+InformationDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/!svn/ver/42526/56kuaiche/trunk/jinrimeitan_server/jrmt-information-api/src/main/java/com/swift/jrmt/information/dto/InformationDto.java
+END
+InformationContentDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svn/!svn/ver/42560/56kuaiche/trunk/jinrimeitan_server/jrmt-information-api/src/main/java/com/swift/jrmt/information/dto/InformationContentDto.java
+END

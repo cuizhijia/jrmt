@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.swift.jrmt.information.dao.AudioStatDao">
+
+	
+	<resultMap id="BaseResultMap" type="com.swift.jrmt.information.model.AudioStat" >
+	    <id column="id" property="id" jdbcType="BIGINT" />
+	    <result column="created" property="created" jdbcType="TIMESTAMP" />
+	    <result column="deleted" property="deleted" jdbcType="BIT" />
+	    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+	    <result column="audio_id" property="audioId" jdbcType="INTEGER" />
+	    <result column="play_num" property="playNum" jdbcType="INTEGER" />
+	    <result column="visit_num" property="visitNum" jdbcType="INTEGER" />
+	    <result column="comment_num" property="commentNum" jdbcType="INTEGER" />
+	    <result column="praise_num" property="praiseNum" jdbcType="INTEGER"/>
+	    <result column="critical_num" property="criticalNum" jdbcType="INTEGER" />
+	    <result column="share_num" property="shareNum" jdbcType="INTEGER" />
+	    <result column="collect_num" property="collectNum" jdbcType="INTEGER" />
+  	</resultMap>
+  	
+  	<resultMap id="BaseResultMapByDto" type="com.swift.jrmt.information.dto.AudioStatDto" >
+	    <id column="id" property="id" jdbcType="BIGINT" />
+	    <result column="created" property="created" jdbcType="TIMESTAMP" />
+	    <result column="deleted" property="deleted" jdbcType="BIT" />
+	    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+	    <result column="audio_id" property="audioId" jdbcType="INTEGER" />
+	    <result column="play_num" property="playNum" jdbcType="INTEGER" />
+	    <result column="visit_num" property="visitNum" jdbcType="INTEGER" />
+	    <result column="comment_num" property="commentNum" jdbcType="INTEGER" />
+	    <result column="praise_num" property="praiseNum" jdbcType="INTEGER"/>
+	    <result column="critical_num" property="criticalNum" jdbcType="INTEGER" />
+	    <result column="share_num" property="shareNum" jdbcType="INTEGER" />
+	    <result column="collect_num" property="collectNum" jdbcType="INTEGER" />
+  	</resultMap>
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+			id,
+			created,
+			deleted,
+			updated,
+			audio_id,
+			play_num,
+			visit_num,
+			comment_num,
+			praise_num,
+			critical_num,
+			share_num,
+			collect_num
+
+	</sql>
+
+	<!-- 通用条件列-->
+	<sql id="Base_And">
+		<if test="id != null">
+		  and id=#{id,jdbcType=BIGINT}  
+		</if>
+		<if test="created != null">
+		  and created=#{created,jdbcType=TIMESTAMP}  
+		</if>
+		<if test="deleted != null">
+		  and deleted=#{deleted,jdbcType=BIT}  
+		</if>
+		<if test="updated != null">
+		  and updated=#{updated,jdbcType=TIMESTAMP}  
+		</if>
+		<if test="audioId != null">
+		  and audio_id=#{audioId,jdbcType=BIGINT}  
+		</if>
+		<if test="playNum != null">
+		  and play_num=#{playNum,jdbcType=INTEGER}  
+		</if>
+		<if test="visitNum != null">
+		  and visit_num=#{visitNum,jdbcType=INTEGER}  
+		</if>
+		<if test="commentNum != null">
+		  and comment_num=#{commentNum,jdbcType=INTEGER}  
+		</if>
+		<if test="praiseNum != null">
+		  and praise_num=#{praiseNum,jdbcType=INTEGER}  
+		</if>
+		<if test="criticalNum != null">
+		  and critical_num=#{criticalNum,jdbcType=INTEGER}  
+		</if>
+		<if test="shareNum != null">
+		  and share_num=#{shareNum,jdbcType=INTEGER}  
+		</if>
+		<if test="collectNum != null">
+		  and collect_num=#{collectNum,jdbcType=INTEGER}  
+		</if>
+
+	</sql>
+
+	<!-- 查询单个对象方法-->
+	<select id="selectByPrimaryKey" parameterType="com.swift.jrmt.information.model.AudioStat" resultType="com.swift.jrmt.information.model.AudioStat"  >
+		 select <include refid="Base_Column_List"/> 
+		  from audio_stat
+		  where 1=1 <include refid="Base_And"/> 
+	</select>
+	
+	<select id="findByModel" parameterType="com.swift.jrmt.information.dto.AudioStatDto" resultMap="BaseResultMapByDto"  >
+		 select <include refid="Base_Column_List"/> 
+		  from audio_stat
+		  where 1=1 <include refid="Base_And"/> 
+	</select>
+
+	<!-- 添加 （匹配有值的字段）-->
+	<insert id="insertSelective" parameterType="com.swift.jrmt.information.model.AudioStat">
+		 INSERT INTO audio_stat
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="id != null">
+				 id,
+			</if>
+			<if test="created != null">
+				 created,
+			</if>
+			<if test="deleted != null">
+				 deleted,
+			</if>
+			<if test="updated != null">
+				 updated,
+			</if>
+			<if test="audioId != null">
+				 audio_id,
+			</if>
+			<if test="playNum != null">
+				 play_num,
+			</if>
+			<if test="visitNum != null">
+				 visit_num,
+			</if>
+			<if test="commentNum != null">
+				 comment_num,
+			</if>
+			<if test="praiseNum != null">
+				 praise_num,
+			</if>
+			<if test="criticalNum != null">
+				 critical_num,
+			</if>
+			<if test="shareNum != null">
+				 share_num,
+			</if>
+			<if test="collectNum != null">
+				 collect_num,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="id!=null">
+				 #{id, jdbcType=BIGINT},
+			</if>
+			<if test="created!=null">
+				 #{created,jdbcType= TIMESTAMP},
+			</if>
+			<if test="deleted!=null">
+				 #{deleted, jdbcType=BIT},
+			</if>
+			<if test="updated!=null">
+				 #{updated, jdbcType=TIMESTAMP},
+			</if>
+			<if test="audioId!=null">
+				 #{audioId, jdbcType=BIGINT},
+			</if>
+			<if test="playNum!=null">
+				 #{playNum, jdbcType=INTEGER},
+			</if>
+			<if test="visitNum!=null">
+				 #{visitNum, jdbcType=INTEGER},
+			</if>
+			<if test="commentNum!=null">
+				 #{commentNum, jdbcType=INTEGER},
+			</if>
+			<if test="praiseNum!=null">
+				 #{praiseNum, jdbcType=INTEGER},
+			</if>
+			<if test="criticalNum!=null">
+				 #{criticalNum, jdbcType=INTEGER},
+			</if>
+			<if test="shareNum!=null">
+				 #{shareNum, jdbcType=INTEGER},
+			</if>
+			<if test="collectNum!=null">
+				 #{collectNum, jdbcType=INTEGER},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKeySelective" parameterType="com.swift.jrmt.information.model.AudioStat">
+		 UPDATE audio_stat
+ 		 <set> 
+			<if test="created != null">
+				 created = #{created, jdbcType=TIMESTAMP },
+			</if>
+			<if test="deleted != null">
+				 deleted = #{deleted,jdbcType= BIT },
+			</if>
+			<if test="updated != null">
+				 updated = #{updated, jdbcType=TIMESTAMP },
+			</if>
+			<if test="audioId != null">
+				 audio_id = #{audioId,jdbcType= BIGINT },
+			</if>
+			<if test="playNum != null">
+				 play_num = #{playNum, jdbcType=INTEGER },
+			</if>
+			<if test="visitNum != null">
+				 visit_num = #{visitNum,jdbcType= INTEGER },
+			</if>
+			<if test="commentNum != null">
+				 comment_num = #{commentNum,jdbcType= INTEGER },
+			</if>
+			<if test="praiseNum != null">
+				 praise_num = #{praiseNum,jdbcType= INTEGER },
+			</if>
+			<if test="criticalNum != null">
+				 critical_num = #{criticalNum, jdbcType=INTEGER },
+			</if>
+			<if test="shareNum != null">
+				 share_num = #{shareNum, jdbcType=INTEGER },
+			</if>
+			<if test="collectNum != null">
+				 collect_num = #{collectNum, jdbcType=INTEGER },
+			</if>
+
+ 		 </set>
+		 WHERE id = #{id,jdbcType= BIGINT}
+	</update>
+	
+	
+	
+	<update id="updateAudioStat" parameterType="com.swift.jrmt.information.dto.AudioStatDto">
+		 UPDATE audio_stat
+ 		 <set> 
+			<if test="created != null">
+				 created = #{created, jdbcType=TIMESTAMP },
+			</if>
+			<if test="deleted != null">
+				 deleted = #{deleted,jdbcType= BIT },
+			</if>
+			<if test="updated != null">
+				 updated = #{updated, jdbcType=TIMESTAMP },
+			</if>
+			<if test="playNum != null">
+				 play_num = #{playNum, jdbcType=INTEGER },
+			</if>
+			<if test="visitNum != null">
+				 visit_num = #{visitNum,jdbcType= INTEGER },
+			</if>
+			<if test="commentNum != null">
+				 comment_num = #{commentNum,jdbcType= INTEGER },
+			</if>
+			<if test="praiseNum != null">
+				 praise_num = #{praiseNum,jdbcType= INTEGER },
+			</if>
+			<if test="criticalNum != null">
+				 critical_num = #{criticalNum, jdbcType=INTEGER },
+			</if>
+			<if test="shareNum != null">
+				 share_num = #{shareNum, jdbcType=INTEGER },
+			</if>
+			<if test="collectNum != null">
+				 collect_num = #{collectNum, jdbcType=INTEGER },
+			</if>
+
+ 		 </set>
+		 WHERE audio_id = #{audioId,jdbcType= BIGINT }
+	</update>
+
+	<!-- 删除-->
+	<delete id="deleteByPrimaryKey">
+		 delete from audio_stat WHERE id = #{id,jdbcType= BIGINT} 
+	</delete>
+
+
+</mapper>

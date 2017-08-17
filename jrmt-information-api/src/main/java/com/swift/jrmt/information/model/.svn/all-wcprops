@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/!svn/ver/42517/56kuaiche/trunk/jinrimeitan_server/jrmt-information-api/src/main/java/com/swift/jrmt/information/model
+END
+InformationStat.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/!svn/ver/42227/56kuaiche/trunk/jinrimeitan_server/jrmt-information-api/src/main/java/com/swift/jrmt/information/model/InformationStat.java
+END
+InformationRight.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/!svn/ver/42227/56kuaiche/trunk/jinrimeitan_server/jrmt-information-api/src/main/java/com/swift/jrmt/information/model/InformationRight.java
+END
+InformationContent.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/!svn/ver/42227/56kuaiche/trunk/jinrimeitan_server/jrmt-information-api/src/main/java/com/swift/jrmt/information/model/InformationContent.java
+END
+Information.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/!svn/ver/42517/56kuaiche/trunk/jinrimeitan_server/jrmt-information-api/src/main/java/com/swift/jrmt/information/model/Information.java
+END
+Tag.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/!svn/ver/42227/56kuaiche/trunk/jinrimeitan_server/jrmt-information-api/src/main/java/com/swift/jrmt/information/model/Tag.java
+END
+AudioStat.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/!svn/ver/42269/56kuaiche/trunk/jinrimeitan_server/jrmt-information-api/src/main/java/com/swift/jrmt/information/model/AudioStat.java
+END
+KeyWord.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/!svn/ver/42129/56kuaiche/trunk/jinrimeitan_server/jrmt-information-api/src/main/java/com/swift/jrmt/information/model/KeyWord.java
+END
+InformationTop.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/!svn/ver/42227/56kuaiche/trunk/jinrimeitan_server/jrmt-information-api/src/main/java/com/swift/jrmt/information/model/InformationTop.java
+END
+Audio.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/!svn/ver/42421/56kuaiche/trunk/jinrimeitan_server/jrmt-information-api/src/main/java/com/swift/jrmt/information/model/Audio.java
+END
+Channel.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/!svn/ver/42227/56kuaiche/trunk/jinrimeitan_server/jrmt-information-api/src/main/java/com/swift/jrmt/information/model/Channel.java
+END

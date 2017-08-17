@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.swift.jrmt.information.dao.InformationRightDao">
+	
+	<resultMap id="BaseResultMap" type="com.swift.jrmt.information.model.InformationRight" >
+	    <id column="id" property="id" jdbcType="BIGINT" />
+	    <result column="information_id" property="informationId" jdbcType="BIGINT" />
+	    <result column="group_id" property="groupId" jdbcType="BIGINT" />
+	    <result column="user_id" property="userId" jdbcType="BIGINT" />
+	    <result column="c_time" property="cTime" jdbcType="TIMESTAMP"/>
+	    <result column="u_time" property="uTime" jdbcType="TIMESTAMP" />
+  	</resultMap>
+	
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+			id,
+			information_id,
+			group_id,
+			user_id,
+			c_time,
+			u_time
+
+	</sql>
+
+	<!-- 通用条件列-->
+	<sql id="Base_And">
+		<if test="id != null">
+		  and id=#{id,jdbcType=BIGINT}  
+		</if>
+		<if test="informationId != null">
+		  and information_id=#{informationId,jdbcType=BIGINT}  
+		</if>
+		<if test="groupId != null">
+		  and group_id=#{groupId,jdbcType=BIGINT}  
+		</if>
+		<if test="userId != null">
+		  and user_id=#{userId,jdbcType=BIGINT}  
+		</if>
+		<if test="cTime != null">
+		  and c_time=#{cTime,jdbcType=TIMESTAMP}  
+		</if>
+		<if test="uTime != null">
+		  and u_time=#{uTime,jdbcType=TIMESTAMP}  
+		</if>
+
+	</sql>
+
+	<!-- 查询单个对象方法-->
+	<select id="queryObj" parameterType="com.swift.jrmt.information.model.InformationRight" resultType="com.swift.jrmt.information.model.InformationRight"  >
+		 select <include refid="Base_Column_List"/> 
+		  from information_right
+		  where 1=1 <include refid="Base_And"/> 
+	</select>
+
+	<!-- 添加 （匹配有值的字段）-->
+	<insert id="insertInformationRight" parameterType="com.swift.jrmt.information.model.InformationRight">
+		 INSERT INTO information_right
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="id != null">
+				 id,
+			</if>
+			<if test="informationId != null">
+				 information_id,
+			</if>
+			<if test="groupId != null">
+				 group_id,
+			</if>
+			<if test="userId != null">
+				 user_id,
+			</if>
+			<if test="cTime != null">
+				 c_time,
+			</if>
+			<if test="uTime != null">
+				 u_time,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="id!=null">
+				 #{id, jdbcType=BIGINT},
+			</if>
+			<if test="informationId!=null">
+				 #{informationId, jdbcType=BIGINT},
+			</if>
+			<if test="groupId!=null">
+				 #{groupId, jdbcType=BIGINT},
+			</if>
+			<if test="userId!=null">
+				 #{userId,jdbcType= BIGINT},
+			</if>
+			<if test="cTime!=null">
+				 #{cTime, jdbcType=TIMESTAMP},
+			</if>
+			<if test="uTime!=null">
+				 #{uTime,jdbcType= TIMESTAMP},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 修 改-->
+	<update id="updateInformationRight" parameterType="com.swift.jrmt.information.model.InformationRight">
+		 UPDATE information_right
+ 		 <set> 
+			<if test="informationId != null">
+				 information_id = #{informationId,jdbcType= BIGINT },
+			</if>
+			<if test="groupId != null">
+				 group_id = #{groupId, jdbcType=BIGINT },
+			</if>
+			<if test="userId != null">
+				 user_id = #{userId,jdbcType= BIGINT },
+			</if>
+			<if test="cTime != null">
+				 c_time = #{cTime,jdbcType= TIMESTAMP },
+			</if>
+			<if test="uTime != null">
+				 u_time = #{uTime, jdbcType=TIMESTAMP },
+			</if>
+
+ 		 </set>
+		 WHERE id = #{id, jdbcType=INTEGER}
+	</update>
+
+	<!-- 删除-->
+	<delete id="deleteByCloumn">
+		 delete from information_right  WHERE id = #{id, jdbcType=BIGINT}
+	</delete>
+
+
+</mapper>

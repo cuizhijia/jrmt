@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.swift.jrmt.information.dao.TagDao">
+
+	<resultMap id="BaseResultMap" type="com.swift.jrmt.information.model.Tag" >
+	    <id column="id" property="id" jdbcType="BIGINT" />
+	    <result column="created" property="created" jdbcType="TIMESTAMP" />
+	    <result column="deleted" property="deleted" jdbcType="BIT" />
+	    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+	    <result column="user_id" property="userId" jdbcType="BIGINT" />
+	    <result column="status" property="status" jdbcType="INTEGER" />
+	    <result column="title" property="title" jdbcType="VARCHAR" />
+	    <result column="pub_time" property="pubTime" jdbcType="TIMESTAMP" />
+  	</resultMap>
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+			id,
+			created,
+			deleted,
+			updated,
+			user_id,
+			status,
+			title,
+			pub_time
+
+	</sql>
+
+	<!-- 通用条件列-->
+	<sql id="Base_And">
+		<if test="id != null">
+		  and id=#{id,jdbcType=BIGINT}  
+		</if>
+		<if test="created != null">
+		  and created=#{created,jdbcType=TIMESTAMP}  
+		</if>
+		<if test="deleted != null">
+		  and deleted=#{deleted,jdbcType=BIT}  
+		</if>
+		<if test="updated != null">
+		  and updated=#{updated,jdbcType=TIMESTAMP}  
+		</if>
+		<if test="userId != null">
+		  and user_id=#{userId,jdbcType=BIGINT}  
+		</if>
+		<if test="status != null">
+		  and status=#{status,jdbcType=INTEGER}  
+		</if>
+		<if test="title != null">
+		  and title=#{title,jdbcType=VARCHAR}  
+		</if>
+		<if test="pubTime != null">
+		  and pub_time=#{pubTime,jdbcType=TIMESTAMP}  
+		</if>
+
+	</sql>
+
+	<!-- 查询单个对象方法-->
+	<select id="selectByPrimaryKey" parameterType="com.swift.jrmt.information.model.Tag" resultType="com.swift.jrmt.information.model.Tag"  >
+		 select <include refid="Base_Column_List"/> 
+		  from tag
+		  where 1=1 <include refid="Base_And"/> 
+	</select>
+	
+	<select id="findTagListPage" parameterType="com.swift.jrmt.information.model.Tag" resultType="com.swift.jrmt.information.dto.TagDto">
+		 select tag.title,tag.created,tag.id,admin.username,tag.`status` from 
+ 			tag
+			left JOIN admin_user admin ON tag.user_id = admin.id 
+			where 1=1 and tag.deleted = 0 <include refid="Base_And"/>
+			ORDER BY id DESC
+	</select>
+
+	<!-- 添加 （匹配有值的字段）-->
+	<insert id="insertSelective" parameterType="com.swift.jrmt.information.model.Tag">
+		 INSERT INTO tag
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="id != null">
+				 id,
+			</if>
+			<if test="created != null">
+				 created,
+			</if>
+			<if test="deleted != null">
+				 deleted,
+			</if>
+			<if test="updated != null">
+				 updated,
+			</if>
+			<if test="userId != null">
+				 user_id,
+			</if>
+			<if test="status != null">
+				 status,
+			</if>
+			<if test="title != null">
+				 title,
+			</if>
+			<if test="pubTime != null">
+				 pub_time,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="id!=null">
+				 #{id, jdbcType=BIGINT},
+			</if>
+			<if test="created!=null">
+				 #{created, jdbcType=TIMESTAMP},
+			</if>
+			<if test="deleted!=null">
+				 #{deleted, jdbcType=BIT},
+			</if>
+			<if test="updated!=null">
+				 #{updated, jdbcType=TIMESTAMP},
+			</if>
+			<if test="userId!=null">
+				 #{userId, jdbcType=BIGINT},
+			</if>
+			<if test="pubUid!=null">
+				 #{pubUid, jdbcType=BIGINT},
+			</if>
+			<if test="status!=null">
+				 #{status, jdbcType=INTEGER},
+			</if>
+			<if test="title!=null">
+				 #{title, jdbcType=VARCHAR},
+			</if>
+			<if test="pubTime!=null">
+				 #{pubTime, jdbcType=TIMESTAMP},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKeySelective" parameterType="com.swift.jrmt.information.model.Tag">
+		 UPDATE tag
+ 		 <set> 
+			<if test="created != null">
+				 created = #{created, jdbcType=TIMESTAMP },
+			</if>
+			<if test="deleted != null">
+				 deleted = #{deleted, jdbcType=BIT },
+			</if>
+			<if test="updated != null">
+				 updated = #{updated, jdbcType=TIMESTAMP },
+			</if>
+			<if test="userId != null">
+				 user_id = #{userId, jdbcType=BIGINT },
+			</if>
+			<if test="status != null">
+				 status = #{status, jdbcType=INTEGER },
+			</if>
+			<if test="title != null">
+				 title = #{title, jdbcType=VARCHAR },
+			</if>
+			<if test="pubTime != null">
+				 pub_time = #{pubTime, jdbcType=TIMESTAMP },
+			</if>
+
+ 		 </set>
+		 WHERE id = #{id, jdbcType=BIGINT}
+	</update>
+
+	<!-- 物理删除-->
+	<delete id="deleteByPrimaryKey">
+		 delete from tag where id = #{id, jdbcType=BIGINT} 
+	</delete>
+
+</mapper>

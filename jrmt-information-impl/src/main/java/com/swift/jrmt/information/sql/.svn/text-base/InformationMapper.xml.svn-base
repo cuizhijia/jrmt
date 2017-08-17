@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.swift.jrmt.information.dao.InformationDao">
+	
+	<resultMap id="BaseResultMap" type="com.swift.jrmt.information.model.Information" >
+	    <id column="id" property="id" jdbcType="BIGINT" />
+	    <result column="created" property="created" jdbcType="TIMESTAMP" />
+	    <result column="deleted" property="deleted" jdbcType="BIT" />
+	    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+	    <result column="channel_id" property="channelId" jdbcType="BIGINT" />
+	    <result column="user_id" property="userId" jdbcType="BIGINT" />
+	    <result column="auditor_id" property="auditorId" jdbcType="BIGINT" />
+	    <result column="pub_uid" property="pubUid" jdbcType="BIGINT" />
+	    <result column="status" property="status" jdbcType="INTEGER" />
+	    <result column="title" property="title" jdbcType="VARCHAR" />
+	    <result column="remark" property="remark" jdbcType="VARCHAR"/>	    
+	    <result column="pic_url" property="picUrl" jdbcType="VARCHAR" />
+	    <result column="vedio" property="vedio" jdbcType="VARCHAR" />
+	    <result column="media_id" property="mediaId" jdbcType="BIGINT"/>
+	    <result column="keywords" property="keywords" jdbcType="VARCHAR" />
+	    <result column="tag_id" property="tagId" jdbcType="BIGINT" />
+	    <result column="province_id" property="provinceId" jdbcType="VARCHAR" />
+	    <result column="city_id" property="cityId" jdbcType="VARCHAR"/>
+	    <result column="area_id" property="areaId" jdbcType="VARCHAR" />
+	    <result column="is_top" property="isTop" jdbcType="INTEGER" />
+	    <result column="recommend" property="recommend" jdbcType="INTEGER" />
+	    <result column="rank" property="rank" jdbcType="INTEGER"/>
+	    <result column="content_link" property="contentLink" jdbcType="VARCHAR" />
+	    <result column="share_link" property="shareLink" jdbcType="VARCHAR" />
+	    <result column="is_local" property="isLocal" jdbcType="INTEGER" />
+	    <result column="reject_reason" property="rejectReason" jdbcType="VARCHAR"/>
+	    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+	    <result column="pub_time" property="pubTime" jdbcType="TIMESTAMP" />
+  	</resultMap>
+  	
+  	<resultMap id="BaseResultModelMap" type="com.swift.jrmt.information.dto.InformationDto" >
+	    <id column="id" property="id" jdbcType="BIGINT" />
+	    <result column="created" property="created" jdbcType="TIMESTAMP" />
+	    <result column="deleted" property="deleted" jdbcType="BIT" />
+	    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+	    <result column="channel_id" property="channelId" jdbcType="BIGINT" />
+	    <result column="user_id" property="userId" jdbcType="BIGINT" />
+	    <result column="auditor_id" property="auditorId" jdbcType="BIGINT" />
+	    <result column="pub_uid" property="pubUid" jdbcType="BIGINT" />
+	    <result column="status" property="status" jdbcType="INTEGER" />
+	    <result column="title" property="title" jdbcType="VARCHAR" />
+	    <result column="remark" property="remark" jdbcType="VARCHAR"/>	    
+	    <result column="pic_url" property="picUrl" jdbcType="VARCHAR" />
+	    <result column="vedio" property="vedio" jdbcType="VARCHAR" />
+	    <result column="media_id" property="mediaId" jdbcType="BIGINT"/>
+	    <result column="keywords" property="keywords" jdbcType="VARCHAR" />
+	    <result column="tag_id" property="tagId" jdbcType="BIGINT" />
+	    <result column="province_id" property="provinceId" jdbcType="VARCHAR" />
+	    <result column="city_id" property="cityId" jdbcType="VARCHAR"/>
+	    <result column="area_id" property="areaId" jdbcType="VARCHAR" />
+	    <result column="is_top" property="isTop" jdbcType="INTEGER" />
+	    <result column="recommend" property="recommend" jdbcType="INTEGER" />
+	    <result column="rank" property="rank" jdbcType="INTEGER"/>
+	    <result column="content_link" property="contentLink" jdbcType="VARCHAR" />
+	    <result column="share_link" property="shareLink" jdbcType="VARCHAR" />
+	    <result column="is_local" property="isLocal" jdbcType="INTEGER" />
+	    <result column="reject_reason" property="rejectReason" jdbcType="VARCHAR"/>
+	    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+	    <result column="pub_time" property="pubTime" jdbcType="TIMESTAMP" />
+	    <collection property="keyWordsList"  ofType="KeyWord" column="keywords" select="getKeyWords"></collection>
+  	</resultMap>
+  	
+  	<resultMap id="selectInformationListPage" type="com.swift.jrmt.information.dto.InformationDto" >
+	    <id column="id" property="id" jdbcType="BIGINT" />
+	    <result column="created" property="created" jdbcType="TIMESTAMP" />
+	    <result column="status" property="status" jdbcType="INTEGER" />
+	    <result column="title" property="title" jdbcType="VARCHAR" />
+	    <result column="keywords" property="keywords" jdbcType="VARCHAR" />
+	    <result column="pub_time" property="pubTime" jdbcType="TIMESTAMP" />
+	    <result column="channelTitle" property="channelTitle" jdbcType="VARCHAR" />
+	    <result column="username" property="username" jdbcType="VARCHAR" />
+	    <result column="auditName" property="auditName" jdbcType="VARCHAR" />
+	   	<collection property="keyWordsList"  ofType="KeyWord" column="keywords" select="getKeyWords"></collection>	    
+  	</resultMap>
+  	
+  	<resultMap type="com.swift.jrmt.information.model.KeyWord" id="selectKeyWords">
+  		<id column="id" property="id" jdbcType="BIGINT" />
+  		<result column="title" property="title" jdbcType="VARCHAR" />
+  	</resultMap>
+	
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+			id,
+			created,
+			deleted,
+			updated,
+			channel_id,
+			user_id,
+			auditor_id,
+			pub_uid,
+			status,
+			title,
+			remark,	
+			pic_url,
+			vedio,
+			media_id,
+			keywords,
+			tag_id,
+			province_id,
+			city_id,
+			area_id,			
+			is_top,
+			recommend,
+			rank,
+			content_link,		
+			share_link,
+			is_local,
+			reject_reason,
+			audit_time,
+			pub_time
+
+	</sql>
+
+	<!-- 通用条件列-->
+	<sql id="Base_And">
+		<if test="id != null">
+		  and id=#{id,jdbcType=BIGINT}  
+		</if>
+		<if test="created != null">
+		  and created=#{created,jdbcType=TIMESTAMP}  
+		</if>
+		<if test="deleted != null">
+		  and deleted=#{deleted,jdbcType=BIT}  
+		</if>
+		<if test="updated != null">
+		  and updated=#{updated,jdbcType=TIMESTAMP}  
+		</if>
+		<if test="channelId != null">
+		  and channel_id=#{channelId,jdbcType=BIGINT}  
+		</if>
+		<if test="userId != null">
+		  and user_id=#{userIdjdbcType=,BIGINT}  
+		</if>
+		<if test="auditorId != null">
+		  and auditor_id=#{auditorId,jdbcType=BIGINT}  
+		</if>
+		<if test="pubUid != null">
+		  and pub_uid=#{pubUid,jdbcType=BIGINT}  
+		</if>
+		<if test="status != null">
+		  and status=#{status,jdbcType=INTEGER}  
+		</if>
+		<if test="title != null">
+		  and title like "%"#{title,jdbcType=VARCHAR}"%" 
+		</if>
+		<if test="remark != null">
+		  and remark=#{remark,jdbcType=VARCHAR}  
+		</if>
+		<if test="picUrl != null">
+		  and pic_url=#{picUrl,jdbcType=VARCHAR}  
+		</if>
+		<if test="vedio != null">
+		  and vedio=#{vedio,jdbcType=VARCHAR}  
+		</if>
+		<if test="mediaId != null">
+		  and media_id=#{mediaId,jdbcType=BIGINT}  
+		</if>
+		<if test="keywords != null">
+		  and keywords=#{keywords,jdbcType=VARCHAR}  
+		</if>
+		<if test="tagId != null">
+		  and tag_id=#{tagId,jdbcType=BIGINT}  
+		</if>
+		<if test="provinceId != null">
+		  and province_id=#{provinceId,jdbcType=VARCHAR}  
+		</if>
+		<if test="cityId != null">
+		  and city_id=#{cityId,jdbcType=VARCHAR}  
+		</if>
+		<if test="areaId != null">
+		  and area_id=#{areaId,jdbcType=VARCHAR}  
+		</if>
+		<if test="isTop != null">
+		  and is_top=#{isTop,jdbcType=INTEGER}  
+		</if>
+		<if test="recommend != null">
+		  and recommend=#{recommend,jdbcType=INTEGER}  
+		</if>
+		<if test="rank != null">
+		  and rank=#{rank,jdbcType=INTEGER}  
+		</if>
+		<if test="contentLink != null">
+		  and content_link=#{contentLink,jdbcType=VARCHAR}  
+		</if>
+		<if test="shareLink != null">
+		  and share_link=#{shareLink,jdbcType=VARCHAR}  
+		</if>
+		<if test="isLocal != null">
+		  and is_local=#{isLocal,jdbcType=INTEGER}  
+		</if>
+		<if test="rejectReason != null">
+		  and reject_reason=#{rejectReason,jdbcType=VARCHAR}  
+		</if>
+		<if test="auditTime != null">
+		  and audit_time=#{auditTime,jdbcType=TIMESTAMP}  
+		</if>
+		<if test="pubTime != null">
+		  and pub_time=#{pubTime,jdbcType=TIMESTAMP}  
+		</if>
+		<if test="startCreatedTime != null  and startCreatedTime !=''">
+             <![CDATA[ AND created >= #{startCreatedTime,jdbcType=TIMESTAMP} ]]>
+         </if>
+         <if test="endCreatedTime != null  and endCreatedTime !=''">
+             <![CDATA[ AND created <= #{endCreatedTime,jdbcType=TIMESTAMP} ]]>
+         </if>
+         <if test="startPubTime != null  and startPubTime !=''">
+             <![CDATA[ AND pub_time >= #{startPubTime,jdbcType=TIMESTAMP} ]]>
+         </if>
+         <if test="endPubTime != null  and endPubTime !=''">
+             <![CDATA[ AND pub_time <= #{endPubTime,jdbcType=TIMESTAMP} ]]>
+         </if>
+
+	</sql>
+	
+	<select id="getKeyWords" parameterType="String" resultMap="selectKeyWords">
+  		select id,title from keyword where id in (${value})
+  	</select>
+
+	<!-- 查询单个对象方法-->
+	<select id="selectByPrimaryKey" parameterType="Long" resultType="com.swift.jrmt.information.model.Information">
+		 select <include refid="Base_Column_List"/> 
+		  from information
+		  where  id = #{id, jdbcType=BIGINT}
+	</select>
+	
+	<select id="findInformationModelById" parameterType="Long" resultMap="BaseResultModelMap">
+		 select <include refid="Base_Column_List"/> 
+		  from information
+		  where  id = #{id, jdbcType=BIGINT}
+	</select>
+		
+	<select id="findInformationListPage" parameterType="com.swift.jrmt.information.dto.InformationDto" resultMap="selectInformationListPage">
+		select information.id,information.title,information.created,information.pub_time,
+		channel.title channelTitle,IF(information.keywords IS NULL,'-10000',IF(information.keywords ='','-10000',information.keywords)) keywords,
+		information.`status`,auser.username ,auUser.username auditName,information.media_id,media.title mediaTitle
+		from 
+		 information
+		LEFT JOIN channel ON information.channel_id = channel.id
+		LEFT JOIN admin_user auser ON information.user_id = auser.id
+		LEFT JOIN admin_user auUser ON information.auditor_id = auUser.id
+		  where 1=1 and information.deleted = 0 <include refid="Base_And"/> 
+	</select>
+
+	<!-- 添加 （匹配有值的字段）-->
+	<insert id="insertSelective" parameterType="com.swift.jrmt.information.model.Information">
+		 INSERT INTO information
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="id != null">
+				 id,
+			</if>
+			<if test="created != null">
+				 created,
+			</if>
+			<if test="deleted != null">
+				 deleted,
+			</if>
+			<if test="updated != null">
+				 updated,
+			</if>
+			<if test="channelId != null">
+				 channel_id,
+			</if>
+			<if test="userId != null">
+				 user_id,
+			</if>
+			<if test="auditorId != null">
+				 auditor_id,
+			</if>
+			<if test="pubUid != null">
+				 pub_uid,
+			</if>
+			<if test="status != null">
+				 status,
+			</if>
+			<if test="title != null">
+				 title,
+			</if>
+			<if test="remark != null">
+				 remark,
+			</if>
+			<if test="picUrl != null">
+				 pic_url,
+			</if>
+			<if test="vedio != null">
+				 vedio,
+			</if>
+			<if test="mediaId != null">
+				 media_id,
+			</if>
+			<if test="keywords != null">
+				 keywords,
+			</if>
+			<if test="tagId != null">
+				 tag_id,
+			</if>
+			<if test="provinceId != null">
+				 province_id,
+			</if>
+			<if test="cityId != null">
+				 city_id,
+			</if>
+			<if test="areaId != null">
+				 area_id,
+			</if>
+			<if test="isTop != null">
+				 is_top,
+			</if>
+			<if test="recommend != null">
+				 recommend,
+			</if>
+			<if test="rank != null">
+				 rank,
+			</if>
+			<if test="contentLink != null">
+				 content_link,
+			</if>
+			<if test="shareLink != null">
+				 share_link,
+			</if>
+			<if test="isLocal != null">
+				 is_local,
+			</if>
+			<if test="rejectReason != null">
+				 reject_reason,
+			</if>
+			<if test="auditTime != null">
+				 audit_time,
+			</if>
+			<if test="pubTime != null">
+				 pub_time,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="id!=null">
+				 #{id, jdbcType=BIGINT},
+			</if>
+			<if test="created!=null">
+				 #{created, jdbcType=TIMESTAMP},
+			</if>
+			<if test="deleted!=null">
+				 #{deleted, jdbcType=BIT},
+			</if>
+			<if test="updated!=null">
+				 #{updated, jdbcType=TIMESTAMP},
+			</if>
+			<if test="channelId!=null">
+				 #{channelId,jdbcType= BIGINT},
+			</if>
+			<if test="userId!=null">
+				 #{userId,jdbcType= BIGINT},
+			</if>
+			<if test="auditorId!=null">
+				 #{auditorId, jdbcType=BIGINT},
+			</if>
+			<if test="pubUid!=null">
+				 #{pubUid, jdbcType=BIGINT},
+			</if>
+			<if test="status!=null">
+				 #{status, jdbcType=INTEGER},
+			</if>
+			<if test="title!=null">
+				 #{title, jdbcType=VARCHAR},
+			</if>
+			<if test="remark!=null">
+				 #{remark, jdbcType=VARCHAR},
+			</if>
+			<if test="picUrl!=null">
+				 #{picUrl, jdbcType=VARCHAR},
+			</if>
+			<if test="vedio!=null">
+				 #{vedio, jdbcType=VARCHAR},
+			</if>
+			<if test="mediaId!=null">
+				 #{mediaId, jdbcType=BIGINT},
+			</if>
+			<if test="keywords!=null">
+				 #{keywords, jdbcType=VARCHAR},
+			</if>
+			<if test="tagId!=null">
+				 #{tagId, jdbcType=BIGINT},
+			</if>
+			<if test="provinceId!=null">
+				 #{provinceId, jdbcType=VARCHAR},
+			</if>
+			<if test="cityId!=null">
+				 #{cityId, jdbcType=VARCHAR},
+			</if>
+			<if test="areaId!=null">
+				 #{areaId, jdbcType=VARCHAR},
+			</if>
+			<if test="isTop!=null">
+				 #{isTop, jdbcType=INTEGER},
+			</if>
+			<if test="recommend!=null">
+				 #{recommend, jdbcType=INTEGER},
+			</if>
+			<if test="rank!=null">
+				 #{rank, jdbcType=INTEGER},
+			</if>
+			<if test="contentLink!=null">
+				 #{contentLink, jdbcType=VARCHAR},
+			</if>
+			<if test="shareLink!=null">
+				 #{shareLink, jdbcType=VARCHAR},
+			</if>
+			<if test="isLocal!=null">
+				 #{isLocal, jdbcType=INTEGER},
+			</if>
+			<if test="rejectReason!=null">
+				 #{rejectReason, jdbcType=VARCHAR},
+			</if>
+			<if test="auditTime!=null">
+				 #{auditTime, jdbcType=TIMESTAMP},
+			</if>
+			<if test="pubTime!=null">
+				 #{pubTime, jdbcType=TIMESTAMP},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKeySelective" parameterType="com.swift.jrmt.information.model.Information">
+		 UPDATE information
+ 		 <set> 
+			<if test="created != null">
+				 created = #{created, jdbcType=TIMESTAMP },
+			</if>
+			<if test="deleted != null">
+				 deleted = #{deleted,jdbcType= BIT },
+			</if>
+			<if test="updated != null">
+				 updated = #{updated, jdbcType=TIMESTAMP },
+			</if>
+			<if test="channelId != null">
+				 channel_id = #{channelId, jdbcType=BIGINT },
+			</if>
+			<if test="userId != null">
+				 user_id = #{userId, jdbcType=BIGINT },
+			</if>
+			<if test="auditorId != null">
+				 auditor_id = #{auditorId, jdbcType=BIGINT },
+			</if>
+			<if test="pubUid != null">
+				 pub_uid = #{pubUid,jdbcType= BIGINT },
+			</if>
+			<if test="status != null">
+				 status = #{status, jdbcType=INTEGER },
+			</if>
+			<if test="title != null">
+				 title = #{title, jdbcType=VARCHAR },
+			</if>
+			<if test="remark != null">
+				 remark = #{remark, jdbcType=VARCHAR },
+			</if>
+			<if test="picUrl != null">
+				 pic_url = #{picUrl, jdbcType=VARCHAR },
+			</if>
+			<if test="vedio != null">
+				 vedio = #{vedio, jdbcType=VARCHAR },
+			</if>
+			<if test="mediaId != null">
+				 media_id = #{mediaId, jdbcType=BIGINT },
+			</if>
+			<if test="keywords != null">
+				 keywords = #{keywords, jdbcType=VARCHAR },
+			</if>
+			<if test="tagId != null">
+				 tag_id = #{tagId, jdbcType=BIGINT },
+			</if>
+			<if test="provinceId != null">
+				 province_id = #{provinceId, jdbcType=VARCHAR },
+			</if>
+			<if test="cityId != null">
+				 city_id = #{cityId, jdbcType=VARCHAR },
+			</if>
+			<if test="areaId != null">
+				 area_id = #{areaId, jdbcType=VARCHAR },
+			</if>
+			<if test="isTop != null">
+				 is_top = #{isTop, jdbcType=INTEGER },
+			</if>
+			<if test="recommend != null">
+				 recommend = #{recommend, jdbcType=INTEGER },
+			</if>
+			<if test="rank != null">
+				 rank = #{rank, jdbcType=INTEGER },
+			</if>
+			<if test="contentLink != null">
+				 content_link = #{contentLink, jdbcType=VARCHAR },
+			</if>
+			<if test="shareLink != null">
+				 share_link = #{shareLink, jdbcType=VARCHAR },
+			</if>
+			<if test="isLocal != null">
+				 is_local = #{isLocal, jdbcType=INTEGER },
+			</if>
+			<if test="rejectReason != null">
+				 reject_reason = #{rejectReason, jdbcType=VARCHAR },
+			</if>
+			<if test="auditTime != null">
+				 audit_time = #{auditTime, jdbcType=TIMESTAMP },
+			</if>
+			<if test="pubTime != null">
+				 pub_time = #{pubTime, jdbcType=TIMESTAMP },
+			</if>
+
+ 		 </set>
+		 WHERE id = #{id, jdbcType=BIGINT}
+	</update>
+
+	<!-- 删除-->
+	<delete id="deleteByPrimaryKey">
+		 delete from information  WHERE id = #{id, jdbcType=BIGINT}
+	</delete>
+
+
+</mapper>

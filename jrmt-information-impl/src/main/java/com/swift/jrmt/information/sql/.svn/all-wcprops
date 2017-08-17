@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/!svn/ver/42602/56kuaiche/trunk/jinrimeitan_server/jrmt-information-impl/src/main/java/com/swift/jrmt/information/sql
+END
+AudioMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/!svn/ver/42602/56kuaiche/trunk/jinrimeitan_server/jrmt-information-impl/src/main/java/com/swift/jrmt/information/sql/AudioMapper.xml
+END
+KeyWordMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/!svn/ver/42450/56kuaiche/trunk/jinrimeitan_server/jrmt-information-impl/src/main/java/com/swift/jrmt/information/sql/KeyWordMapper.xml
+END
+InformationTopMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/!svn/ver/42519/56kuaiche/trunk/jinrimeitan_server/jrmt-information-impl/src/main/java/com/swift/jrmt/information/sql/InformationTopMapper.xml
+END
+TagMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/!svn/ver/42305/56kuaiche/trunk/jinrimeitan_server/jrmt-information-impl/src/main/java/com/swift/jrmt/information/sql/TagMapper.xml
+END
+AudioStatMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/!svn/ver/42591/56kuaiche/trunk/jinrimeitan_server/jrmt-information-impl/src/main/java/com/swift/jrmt/information/sql/AudioStatMapper.xml
+END
+InformationMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/!svn/ver/42602/56kuaiche/trunk/jinrimeitan_server/jrmt-information-impl/src/main/java/com/swift/jrmt/information/sql/InformationMapper.xml
+END
+InformationContentMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/svn/!svn/ver/42558/56kuaiche/trunk/jinrimeitan_server/jrmt-information-impl/src/main/java/com/swift/jrmt/information/sql/InformationContentMapper.xml
+END
+InformationStatMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svn/!svn/ver/42591/56kuaiche/trunk/jinrimeitan_server/jrmt-information-impl/src/main/java/com/swift/jrmt/information/sql/InformationStatMapper.xml
+END
+InformationRightMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/svn/!svn/ver/42177/56kuaiche/trunk/jinrimeitan_server/jrmt-information-impl/src/main/java/com/swift/jrmt/information/sql/InformationRightMapper.xml
+END
+ChannelMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/!svn/ver/42602/56kuaiche/trunk/jinrimeitan_server/jrmt-information-impl/src/main/java/com/swift/jrmt/information/sql/ChannelMapper.xml
+END
